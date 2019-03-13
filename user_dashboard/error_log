@@ -1,0 +1,12 @@
+[17-Dec-2018 09:57:24 Etc/GMT] PHP Parse error:  syntax error, unexpected '!=' (T_IS_NOT_EQUAL), expecting ')' in /home/sumikshaservices/public_html/user_dashboard/download-list.php on line 70
+[17-Dec-2018 09:57:40 Etc/GMT] PHP Parse error:  syntax error, unexpected '!==' (T_IS_NOT_IDENTICAL), expecting ')' in /home/sumikshaservices/public_html/user_dashboard/download-list.php on line 70
+[17-Dec-2018 09:57:51 Etc/GMT] PHP Parse error:  syntax error, unexpected '!==' (T_IS_NOT_IDENTICAL), expecting ')' in /home/sumikshaservices/public_html/user_dashboard/download-list.php on line 70
+[17-Dec-2018 20:29:49 Asia/Kolkata] PHP Notice:  Undefined index: user in /home/sumikshaservices/public_html/includes/header.php on line 3
+[20-Dec-2018 12:16:34 Asia/Kolkata] PHP Notice:  Undefined index: user in /home/sumikshaservices/public_html/includes/header.php on line 3
+[20-Dec-2018 18:31:35 Asia/Kolkata] PHP Notice:  Undefined index: user in /home/sumikshaservices/public_html/includes/header.php on line 3
+[20-Dec-2018 19:00:18 Asia/Kolkata] PHP Notice:  Undefined index: user in /home/sumikshaservices/public_html/includes/header.php on line 3
+[24-Dec-2018 15:31:51 Asia/Kolkata] PHP Notice:  Undefined index: user in /home/sumikshaservices/public_html/includes/header.php on line 3
+[24-Dec-2018 17:28:02 Asia/Kolkata] PHP Notice:  Undefined index: user in /home/sumikshaservices/public_html/includes/header.php on line 3
+[28-Dec-2018 13:16:57 Asia/Kolkata] PHP Notice:  Undefined index: user in /home/sumikshaservices/public_html/includes/header.php on line 3
+[28-Dec-2018 13:17:22 Asia/Kolkata] PHP Notice:  Undefined index: user in /home/sumikshaservices/public_html/includes/header.php on line 3
+[29-Dec-2018 16:08:49 Asia/Kolkata] PHP Notice:  Undefined index: user in /home/sumikshaservices/public_html/includes/header.php on line 3

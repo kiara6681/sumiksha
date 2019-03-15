@@ -16,6 +16,98 @@
 <section class="footerSection container-fluid">
     <div class="pageSection  row">
         <div class="container footerWidget">
+            <?php 
+                $sql=$conn->query("select * from courses limit 0,4");
+                while($row=mysqli_fetch_array($sql))
+                {
+                $id = $row['id'];
+                    
+            ?>
+            <ul class="footerLinks col-md-3">
+                <h4 style="color:#fff;"><?= $row['name'];?></h4>
+                <?php 
+                    $sql1=$conn->query("select * from course1 where course_id=$id");
+                    while($row1=mysqli_fetch_array($sql1))
+                    {
+                ?>
+                    <li>
+                    <?php
+                        if($row1['id']==18){
+                    ?>
+                        <a href="https://health.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <?= $row1['name'];?>
+                        </a>
+                    <?php
+                        }
+                        elseif($row1['id']==19){
+                    ?>
+                        <a href="https://termlife.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <?= $row1['name'];?>
+                        </a>
+                    <?php
+                        }
+                        elseif($row1['id']==26){
+                    ?>
+                        <a href="https://travel.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <?= $row1['name'];?>
+                        </a>
+                    <?php
+                        }
+                        elseif($row1['id']==27){
+                    ?>
+                        <a href="http://sme.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <?= $row1['name'];?>
+                        </a>    
+                    <?php
+                        }
+                        if($row1['id']==28){
+                    ?>
+                        <a href="http://home.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <?= $row1['name'];?>
+                        </a> 
+
+                    <?php
+                        }
+                        elseif($row1['id']==51){
+                    ?>
+                        <a href="https://twowheeler.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <?= $row1['name'];?>
+                        </a>
+                    <?php
+                        }
+                        elseif($row1['id']==53){
+                    ?>
+                        <a href="https://ci.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <?= $row1['name'];?>
+                        </a>
+                    <?php
+                        }
+                        elseif($row1['id']==54){
+                    ?>
+                        <a href="http://cancerinsurance.policybazaar.com/ci?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <?= $row1['name'];?>
+                        </a>
+                    <?php
+                        }
+                        elseif($row1['id']!=18 && $row1['id']!=19 && $row1['id']!=26 && $row1['id']!=27 && $row1['id']!=28 && $row1['id']!=51 && $row1['id']!=53 && $row1['id']!=54)
+                        {
+                    ?>
+                        <a href="<?= base_url();?>product/<?= $row1['metatitle'];?>">
+                            <?= $row1['name'];?>
+                        </a>
+                    <?php
+                        }
+                    ?>
+                    </li>
+                <?php
+                    }
+                ?>
+            </ul>
+            <?php
+                }
+            ?>
+        </div>        
+        <div class="container footerWidget">
 
             <ul class="footerLinks col-md-4 ab">
                 <h4 style="color:#fff;">Contact Us</h4>
@@ -31,7 +123,6 @@
             </ul>
             <ul class="footerLinks col-md-4">
                 <h4 style="color:#fff;">Our Location</h4>
-                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d113801.73294127599!2d75.71654911264908!3d26.957265881575527!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db3b47b655555%3A0xa3c44b1fee5f44c5!2schandan+singh+and+associates-+GST+Consultant+in+Jaipur!5e0!3m2!1sen!2sin!4v1535370015817" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe> -->
             </ul>
 
         </div>
@@ -95,9 +186,13 @@
     });
     
 </script>
-
+<!-- animation csss -->
+<script src='<?= base_url();?>frontend_assets/js/wow.min.js'></script>
+<script>
+    new WOW().init();
+</script>
 <!-- jQuery --> 
- <script type="text/javascript" src="<?= base_url();?>frontend_assets/js/cubeportfolio/jquery.cubeportfolio.min.js"></script> 
+<script type="text/javascript" src="<?= base_url();?>frontend_assets/js/cubeportfolio/jquery.cubeportfolio.min.js"></script> 
 <script type="text/javascript" src="<?= base_url();?>frontend_assets/js/cubeportfolio/main.js"></script> 
 <script src="<?= base_url();?>frontend_assets/js/bootstrap.min.js"></script> 
 <script type="text/javascript" src="<?= base_url();?>frontend_assets/js/count-to.js"></script> 
@@ -350,6 +445,7 @@ function is_touch_device() {
         }, 10);
 
     });
+
 </script>
 
  

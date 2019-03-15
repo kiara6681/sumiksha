@@ -43,7 +43,7 @@
             position: relative;
         }
         .modal-dialog{
-            width: 300px;
+            width: 300px; 
         }
     }
 
@@ -187,88 +187,116 @@
         text-align: -webkit-center;
         background: #fff;
     }
-.modal-header{
-    min-height: 0.43px;
-}
-#newsletter 
-{
-    opacity:1;
-    z-index:99999;
-    background: rgba(6, 6, 6, 0.64);
-}
-#newsletter  h3
-{
-    text-align:center;
-    padding:0px 15px;
-}
-#newsletter  p
-{
-    text-align:center;
-    padding:0px 15px;
-}
-#newsletter  button
-{
-    padding:8px 20px;
-    background:#000000;
-    border:1px solid #000000;
-    color:#ffffff;
-}
-#newsletter .form-group
-{
-    margin-top:15px;
-    padding:0px 15px;
-}
-#newsletter .form-group label
-{
-    width:100%;
-}
-#newsletter .form-group .form-control
-{
-    width:80%;
-    height:42px;
-    border-radius:0px;
-    font-size:15px;
-    margin-bottom:10px;
-    
-}
-#newsletter .modal-dialog {
-    -webkit-transition: -webkit-transform .3s ease-out;
-    -o-transition: -o-transform .3s ease-out;
-    transition: transform .3s ease-out;
-    -webkit-transform: translate(0,5%);
-    -ms-transform: translate(0,5%);
-    -o-transform: translate(0,5%);
-    transform: translate(0,5%);
-}
-#newsletter .modal-header
-{
-    padding:0px 10px;
-    border:0px;
-}
-.modal-header .close 
-{
-    margin-top: -2px;
-    margin-right: -8px;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    filter: alpha(opacity=20);
-    opacity: .5;
-    position: absolute;
-    right:10px;
-    cursor:pointer;
-    z-index:9999;
-}
-.modal-header .close:hover 
-{
-    opacity: 1;
-}
-#newsletter .modal-body
-{
-    padding: 0px;
-}
+    .modal-header{
+        min-height: 0.43px;
+    }
+    #newsletter 
+    {
+        opacity:1;
+        z-index:99999;
+        background: rgba(6, 6, 6, 0.64);
+    }
+    #newsletter  h3
+    {
+        text-align:center;
+        padding:0px 15px;
+    }
+    #newsletter  p
+    {
+        text-align:center;
+        padding:0px 15px;
+    }
+    #newsletter  button
+    {
+        padding:8px 20px;
+        background:#000000;
+        border:1px solid #000000;
+        color:#ffffff;
+    }
+    #newsletter .form-group
+    {
+        margin-top:15px;
+        padding:0px 15px;
+    }
+    #newsletter .form-group label
+    {
+        width:100%;
+    }
+    #newsletter .form-group .form-control
+    {
+        width:80%;
+        height:42px;
+        border-radius:0px;
+        font-size:15px;
+        margin-bottom:10px;
+        
+    }
+    #newsletter .modal-dialog {
+        -webkit-transition: -webkit-transform .3s ease-out;
+        -o-transition: -o-transform .3s ease-out;
+        transition: transform .3s ease-out;
+        -webkit-transform: translate(0,5%);
+        -ms-transform: translate(0,5%);
+        -o-transform: translate(0,5%);
+        transform: translate(0,5%);
+    }
+    #newsletter .modal-header
+    {
+        padding:0px 10px;
+        border:0px;
+    }
+    .modal-header .close 
+    {
+        margin-top: -2px;
+        margin-right: -8px;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        filter: alpha(opacity=20);
+        opacity: .5;
+        position: absolute;
+        right:10px;
+        cursor:pointer;
+        z-index:9999;
+    }
+    .modal-header .close:hover 
+    {
+        opacity: 1;
+    }
+    #newsletter .modal-body
+    {
+        padding: 0px;
+    }
+    @-webkit-keyframes rotateIn { 
+    0% { 
+        -webkit-transform-origin: center center; 
+        -webkit-transform: rotate(-200deg); 
+        opacity: 0; 
+    } 
+    100% { 
+        -webkit-transform-origin: center center; 
+        -webkit-transform: rotate(0); 
+        opacity: 1; 
+    } 
+    } 
+    @keyframes rotateIn { 
+        0% { 
+            transform-origin: center center; 
+            transform: rotate(-200deg); 
+            opacity: 0; 
+        } 
+        100% { 
+            transform-origin: center center; 
+            transform: rotate(0); 
+            opacity: 1; 
+        } 
+    } 
+    .rotateIn.go { 
+        -webkit-animation-name: rotateIn; 
+        animation-name: rotateIn; 
+    }
 </style>
 <?php 
     $date = date('m/d/Y');
@@ -293,9 +321,7 @@
 <div id="newsletter" class="modal fade" role="dialog">
 
     <div class="modal-dialog">
-
         <!-- Modal content-->
-
         <div class="modal-content">
 
             <div class="modal-header">
@@ -318,7 +344,7 @@
 <script src="<?= base_url();?>frontend_assets/js/jquery.smooth-scroll.js"></script>
 <link rel="stylesheet" type="text/css" href="<?= base_url();?>frontend_assets/css/ohover.css"/>
 <!-- <link rel="stylesheet" type="text/css" href="css/main.css"/> -->
-<section class="gredientPattern container-fluid">
+<section class="gredientPattern container-fluid " data-sequence='500'>
 <!-- <div class="bgtrans"></div> -->
     <div class="pageSection linePattern row magic-3">
     
@@ -332,7 +358,7 @@
                     {
                ?>
 
-                    <div class="col-xs-5ths col-lg-5ths col-md-5ths col-sm-5ths testimonialMobilelBlk item-hover circle colored effect6 scale_down_up">
+                    <div class="col-xs-5ths col-lg-5ths col-md-5ths col-sm-5ths testimonialMobilelBlk item-hover circle colored effect6 scale_down_up wow <?php if($i<15){?>bounceInRight<?php }else{?>bounceInLeft<?php }?> slower" data-id='1'>
                         <?php
                             if($row['id']==19){
                         ?>
@@ -394,7 +420,7 @@
                     $i++;
                 }
                 ?>
-                <div class="col-xs-5ths col-lg-5ths col-md-5ths col-sm-5ths testimonialMobilelBlk item-hover circle colored effect6 scale_down_up">
+                <div class="col-xs-5ths col-lg-5ths col-md-5ths col-sm-5ths testimonialMobilelBlk item-hover circle colored effect6 scale_down_up wow bounceInLeft slower">
                     <a href="<?= base_url();?>credit_card">
                         <div class="img">
                             <img src="<?= base_url();?>frontend_assets/images/credit-card.png" style="width: 75px;height: 75px;margin-top: 30px;">
@@ -410,7 +436,7 @@
     </div>
  
 </section>
-<section class="magic-1 section" style="background: linear-gradient(#B24592,#F15F79);">
+<!-- <section class="magic-1 section" style="background: linear-gradient(#B24592,#F15F79);">
     <?php 
         $row1=$conn->query("select * from aboutus limit 0,1");
         $sql1=mysqli_fetch_array($row1);
@@ -420,8 +446,8 @@
         <div style="color:#fff;"><?= $sql1['about_content'];?></div>
     </div>
  
-</section>
-<section class="clearfix text-center section" style="background: linear-gradient(to right, rgb(19, 106, 138), rgb(38, 120, 113));">
+</section> -->
+<section class="clearfix text-center section wow bounceInLeft slower" style="background: linear-gradient(to right, rgb(19, 106, 138), rgb(38, 120, 113));">
     <h2 style="color:#fff;">How to Get Loan</h2>
     <!-- <h5>Sumiksha makes entire borrowing process simple and user friendly<br> You can get your loan funded in as little as 48 hours</h5> -->
     <div class="container aboutUs">
@@ -429,7 +455,7 @@
     </div>
  
 </section>
-<section class="clearfix text-center section" style="background: linear-gradient(to right, rgb(211, 131, 18), rgb(168, 50, 121));">
+<section class="clearfix text-center section wow bounceInRight slower" style="background: linear-gradient(to right, rgb(211, 131, 18), rgb(168, 50, 121));">
     <h2 style="color:#fff;">How to Get Credit Card</h2>
     <!-- <h5>Sumiksha makes entire borrowing process simple and user friendly<br> You can get your loan funded in as little as 48 hours</h5> -->
     <div class="container aboutUs">
@@ -437,7 +463,7 @@
     </div>
  
 </section>
-<section class="clearfix text-center section" style="background: linear-gradient(to right, rgb(157, 80, 187), rgb(110, 72, 170));">
+<section class="clearfix text-center section wow bounceInDown slower" delay="10s" style="background: linear-gradient(to right, rgb(157, 80, 187), rgb(110, 72, 170));">
     <h2 style="color:#fff;">How to Get Insurance</h2>
     <!-- <h5>Sumiksha makes entire borrowing process simple and user friendly<br> You can get your loan funded in as little as 48 hours</h5> -->
     <div class="container aboutUs">
@@ -448,22 +474,22 @@
 <section class="clearfix text-center section" style="background-image: linear-gradient(145deg,#f4a22b,#f34b6b);">
     <h3 class="" style="color: #fff;font-weight: 600;">Bored with old type Investment plans?? Choose us</h3>
     <div class="container aboutUs choose">
-        <div class="col-lg-4">
+        <div class="col-lg-4 wow bounceInLeft slower">
             <i class="fa fa-creative-commons" aria-hidden="true"></i>
             <h5>To making better wealth creation.</h5>
         </div>        
-        <div class="col-lg-4">
+        <div class="col-lg-4 wow zoomIn slower">
             <i class="fa fa-file-image-o" aria-hidden="true"></i>
             <h5>To make your portfolio stronger.</h5>
         </div>        
-        <div class="col-lg-4">
+        <div class="col-lg-4 wow bounceInRight slower">
             <i class="fa fa-star-o" aria-hidden="true"></i>
             <h5>Be a smart Investment achiever.</h5>
         </div>
     </div>
  
 </section>
-<section class="clearfix text-center section" style="background: linear-gradient(to right, rgb(0, 210, 255), rgb(58, 123, 213));">
+<section class="clearfix text-center section wow fadeIn slower" style="background: linear-gradient(to right, rgb(0, 210, 255), rgb(58, 123, 213));">
     <h3 class="" style="color: #fff;font-weight: 600;">Customer Reviews</h3>
     <div class="container">
         <div class="row">
@@ -548,7 +574,7 @@
         </div>
     </div>
 </section>
-<section class="clearfix section" style="background: linear-gradient(to right, rgb(248, 87, 166), rgb(255, 88, 88));">
+<section class="clearfix section wow bounceInUp slower" style="background: linear-gradient(to right, rgb(248, 87, 166), rgb(255, 88, 88));">
 
     <h3 class="text-center" style="color: #fff;font-weight: 600;">Our Partners</h3>
 

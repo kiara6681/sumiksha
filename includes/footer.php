@@ -161,18 +161,6 @@
     </script>
     <script>
         $(document).ready(function() {
-/*            setTimeout(function() {
-                toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    showMethod: 'slideDown',
-                    timeOut: 4000
-                };
-                toastr.success('Welcome to Admin Panel');
-
-            }, 1300);*/
-
-
             var data1 = [
                 [0,4],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13],[13,4],[14,3],[15,3],[16,6]
             ];
@@ -385,38 +373,44 @@
                     });    
                 }
             });
+
             $('.dis_appr').on('click',function(){
-                $("#delt").attr('value', 2);
+                var id = $(this).attr("id");
+                $("#refer_earn_"+id+"").val(2);
                 $('.reject').show();
                 $('.reject').attr("required", "required");
                 $('.reject_hide').hide();
             });            
             $('.login').on('click',function(){
-                $("#delt").attr('value', 3);
-                //alert(id);
+                var id = $(this).attr("id");
+                $("#refer_earn_"+id+"").val(3);
                 $('.reject').show();
                 $('.reject').attr("required", "required");
                 $('.reject_hide').hide();
             });            
             $('.Inprocess').on('click',function(){
-                $("#delt").attr('value', 4);
+                var id = $(this).attr("id");
+                $("#refer_earn_"+id+"").val(4);
                 $('.reject').show();
                 $('.reject').attr("required", "required");
                 $('.reject_hide').hide();
             });            
             $('.file_pending').on('click',function(){
-                $("#delt").attr('value', 5);
+                var id = $(this).attr("id");
+                $("#refer_earn_"+id+"").val(5);
                 $('.reject').show();
                 $('.reject').attr("required", "required");
                 $('.reject_hide').hide();
             });            
             $('.approve').on('click',function(){
-                $("#delt").attr('value', 1);
+                var id = $(this).attr("id");
+                $("#refer_earn_"+id+"").val(1);
                 $('.reject').show();
                 $('.reject').attr("required", "required");
                 $('.reject_hide').hide();
             });
         });
     </script>
+    
 </body>
 </html>

@@ -17,6 +17,8 @@ error_reporting(0);
 
         $unique_code=$_REQUEST['unique_code'];
 
+        $email_id=$_REQUEST['email_id'];
+
         if($delt==0)
         {
             $delt=1;
@@ -32,9 +34,49 @@ error_reporting(0);
             $approve = "UPDATE `login` SET `status` = '".$delt."' WHERE `id` = '$id'";
         }
 
-        if($conn->query($approve))
+        if(!empty($unique_code))
         {
-            //echo "Delete Succesfully";
+
+            $message="";
+            $message .="Your Unique Code is : ".$unique_code."";
+            $subject  ="Reset Password"; //like--- Resume From Website
+            $headers  ="";
+            include("../PHPMailer/PHPMailerAutoload.php"); //Here magic Begen we include PHPMailer Library.
+            include("../PHPMailer/class.phpmailer.php");   
+            $mail = new PHPMailer;
+                                          // Enable verbose debug output
+            $mail->isSMTP(); // Set mailer to use SMTP
+            $mail->Host = 'mailout.one.com;';  // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true; // Enable SMTP authentication
+            $mail->Username = 'test@sumikshaservices.com';// SMTP username 
+            $mail->Password = '?t@NYp^L.Fay'; // SMTP password 
+            $mail->SMTPSecure = 'tls';// Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 25; 
+            $mail->SMTPDebug = 0; // TCP port to connect to
+            $mail->setFrom('test@sumikshaservices.com', 'Unique Code'); //You Can add your own From mail
+            $mail->addAddress($email_id); // Add a recipient id where you want to send mail 
+            
+            $mail->addAttachment($_FILES['cv']['tmp_name'],$_FILES['cv']['name']); //This line Use to Keep User Txt,Doc,pdf file ,attachment      
+            $mail->addReplyTo('info@sumikshaservices.com'); //where you want reply from user
+            $mail->isHTML(true); 
+            $mail->Subject=''.$subject;
+            $mail->Body=''.$message;
+            if(!$mail->send()) 
+                {                            
+                    echo "Error in Form :- $mail->ErrorInfo!. We will Fix This soon";
+                }
+            else 
+                {    
+                    echo "<script language='javascript'>alert('Successfully Submitted!');window.location = 'users-list.php';</script>";              
+                }
+            return true;    
+        }
+        else
+        {
+            if($conn->query($approve))
+            {
+                echo "<script language='javascript'>alert('Successfully Submitted!');window.location = 'users-list.php';</script>";
+            }            
         }
     }
 
@@ -222,6 +264,7 @@ error_reporting(0);
                                                     <div class="col-sm-12">
                                                         <label class="control-label" style="float:left;">Unique Id</label>
                                                         <input type="text" name="unique_code" id="unique_code" class="form-control"> 
+                                                        <input type="hidden" name="email_id" value="<?php echo $data_cmp['username']; ?>" class="form-control"> 
                                                     </div>
                                                     <?php
                                                             }

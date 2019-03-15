@@ -36,6 +36,7 @@ margin-bottom: 5px; */
     border-radius: 50%;
     margin-bottom: 50px;
     border: 2px solid #fff;
+    
 }
 .item-hover.circle .img:before {
     position: absolute;

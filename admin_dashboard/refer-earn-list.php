@@ -170,20 +170,20 @@ error_reporting(0);
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title"><i class="fa fa-check"></i> Approval</h4>
+                                                <h4 class="modal-title"><i class="fa fa-check"></i> Approval </h4>
                                             </div>
                                             <form action="" method="post">
                                                 <div class="modal-body">
-                                                    <input type="hidden" id="delt" name="delt" value="">
+                                                    <input type="hidden" id="refer_earn_<?= $data_cmp['id'];?>" name="delt" value="">
                                                     <input type="hidden" id="appr" name="appr" value="<?= $data_cmp['id'];?>">
                                                     <input type="text" class="form-control reject" name="reject" placeholder="write here...">
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <input class="btn btn-info reject_hide login" id="3" type="button" name="login" value="Login">
-                                                    <input class="btn btn-primary reject_hide Inprocess" id="4" type="button" name="inprocess" value="Inprocess">
-                                                    <button class="btn btn-danger reject_hide file_pending" id="5" type="button" name="file_pending">File Pending</button>
-                                                    <button class="btn btn-success reject_hide approve" id="1" type="button" name="approve">Approve</button>
-                                                    <button class="btn btn-reject reject_hide dis_appr" id="2" type="button">Reject</button>
+                                                    <input class="btn btn-info reject_hide login" id="<?= $data_cmp['id'];?>" type="button" name="login" value="Login">
+                                                    <input class="btn btn-primary reject_hide Inprocess"  id="<?= $data_cmp['id'];?>" type="button" name="inprocess" value="Inprocess">
+                                                    <button class="btn btn-danger reject_hide file_pending"  id="<?= $data_cmp['id'];?>" type="button" name="file_pending">File Pending</button>
+                                                    <button class="btn btn-success reject_hide approve"  id="<?= $data_cmp['id'];?>" type="button" name="approve">Approve</button>
+                                                    <button class="btn btn-reject reject_hide dis_appr"  id="<?= $data_cmp['id'];?>" type="button">Reject</button>
                                                     <button class="btn btn-info reject" type="submit" name="dis_appr" style=" float: left;">Submit</button>
                                                 </div>
                                             </form>

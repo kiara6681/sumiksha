@@ -52,7 +52,6 @@ if(isset($_POST['addfilmlocation1']))
     if(mysqli_query($conn, "INSERT INTO `sub_course` (`name`, `metatitle`, `image`, `description`, `banner_description`, `course_id`, `sub_course_id`) VALUES ('$name', '$metatitle', '$p_image1', '$description', '$banner_description', '$course_id', '$sub_course_id')"))
     {
         echo "<script language='javascript'>alert('Successfully Submited !');window.location = 'sub_course_list.php';</script>";
-        move_uploaded_file($photo_tmp_name,$target);
     }
 }
 

@@ -838,7 +838,7 @@ body {padding-top: 104px;}
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
 .item-hover.circle .img {
-    height: 100px!important;
+    height: 150px!important;
     margin-bottom: 0px!important;
 }  
 #myModal .modal-dialog, #myModal4 .modal-dialog, #myModalflat .modal-dialog {

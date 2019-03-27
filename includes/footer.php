@@ -383,10 +383,19 @@
             });            
             $('.login').on('click',function(){
                 var id = $(this).attr("id");
+                var product_id = $(this).attr("data-id");
                 $("#refer_earn_"+id+"").val(3);
-                $('.reject').show();
-                $('.reject').attr("required", "required");
-                $('.reject_hide').hide();
+                if(product_id==4 || product_id==8){
+                    $('.login_show').show();
+                    $('.login_req').attr("required", "required");
+                    $('.reject_hide').hide();                    
+                }
+                else
+                {
+                    $('.reject').show();
+                    $('.reject').attr("required", "required");
+                    $('.reject_hide').hide();
+                }
             });            
             $('.Inprocess').on('click',function(){
                 var id = $(this).attr("id");
@@ -405,8 +414,8 @@
             $('.approve').on('click',function(){
                 var id = $(this).attr("id");
                 $("#refer_earn_"+id+"").val(1);
-                $('.reject').show();
-                $('.reject').attr("required", "required");
+                $('.approve_tab').show();
+                $('.approve_req').attr("required", "required");
                 $('.reject_hide').hide();
             });
         });

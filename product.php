@@ -493,8 +493,17 @@
         color: #000;
     }
     .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
-        background: #073394;
+        background: #2196f3;
         color: #fff;
+    }
+    .amit label, span
+    {
+        font: 14px 'Open Sans', sans-serif;
+        color: #fff;   
+    }
+    .tab-content span
+    {
+        color: #000;
     }
 </style>
 <script type="text/javascript">
@@ -629,25 +638,25 @@
 </script>
 <section class="gredientPattern container-fluid" style="padding-top: 110px;">
     <div class="pageSection row magic-3">
-        <?php
-            if($pd_id==8 && $course_id!=42)
-            {
-                $row=$conn->query("select * from course1 where course_id='8'");
-                $sql=mysqli_fetch_array($row);
-        ?>
-        <img src="<?= base_url();?>admin_dashboard/uploads/courses/<?= $sql['image'];?>" class="img-responsive">
-        <?php
-            }
-            else{
-        ?>
-        <img src="<?= base_url();?>admin_dashboard/uploads/courses/<?= $sql1['image'];?>" class="img-responsive">
-        <?php
-            }
-        ?>
+<!--         <?php
+    if($pd_id==8 && $course_id!=42)
+    {
+        $row=$conn->query("select * from course1 where course_id='8'");
+        $sql=mysqli_fetch_array($row);
+?>
+<img src="<?= base_url();?>admin_dashboard/uploads/courses/<?= $sql['image'];?>" class="img-responsive">
+<?php
+    }
+    else{
+?>
+<img src="<?= base_url();?>admin_dashboard/uploads/courses/<?= $sql1['image'];?>" class="img-responsive">
+<?php
+    }
+?> -->
     </div>
  </section>
 
-<section class="section-side-image clearfix amit">
+<section class="section-side-image clearfix amit" style="background: #4267b2;">
 
     <div class="container">
 
@@ -655,7 +664,7 @@
             
             <div class="col-md-12 col-sm-12 col-xs-12 bmargin"> 
                 <?php
-                    if (isset($succMSG) ) 
+                    if (isset($succMSG)) 
                     {
                 ?>
                     <div class="form-group">
@@ -666,7 +675,7 @@
                     </div>
                 <?php
                     }
-                    if (isset($errorMSG) ) 
+                    if (isset($errorMSG)) 
                     {
                 ?>
                     <div class="form-group">
@@ -678,14 +687,11 @@
                 <?php
                     }
                 ?>
-                <h3 class="text-center" style="color: #000;font-weight: 600;">
+                <h3 class="text-center" style="color: #fff;font-weight: 600;">
                     <?= $sql1['name'];?>
                 </h3> 
                 <hr>
-                <?php
-                    if($pd_id!=9)
-                    {
-                ?>
+
                 <div class="col-md-12 col-sm-12 col-xs-12">
 
                     <form id="formID" class="job-form" action="" method="post" enctype="multipart/form-data">
@@ -699,7 +705,7 @@
                                 <div class="form-cont">
                                     <label>Full Name <span style="color: red">*</span></label>
 
-                                    <input name="full_name" type="text" class="validate[required] form-control"/>
+                                    <input name="full_name" type="text" class="validate[required] form-control">
 
                                 </div>
                             </div>
@@ -707,7 +713,7 @@
                                 <div class="form-cont">
                                     <label>Email Id <span style="color: red">*</span></label>
 
-                                    <input name="email_id" type="email" class="validate[required,custom[email]] form-control"/>
+                                    <input name="email_id" type="email" class="validate[required,custom[email]] form-control">
 
                                 </div>
                             </div>
@@ -715,7 +721,7 @@
                                 <div class="form-cont">
                                     <label>Mobile No. <span style="color: red">*</span></label>
 
-                                    <input name="mobile_no" type="tel" class="validate[required,custom[phone],maxSize[12],minSize[10]] form-control"/>
+                                    <input name="mobile_no" type="tel" class="validate[required,custom[phone],maxSize[12],minSize[10]] form-control">
 
                                 </div>
                             </div>      
@@ -731,9 +737,9 @@
                             <div class="col-md-4">
                                 <div class="form-cont">
                                     <label>Marital Status <span style="color: red">*</span></label>
-                                    <input name="maritial_status" value="Married" type="radio" class="validate[required]"> Married 
-                                    <input name="maritial_status" value="Single" type="radio" class="validate[required]" > Single 
-                                    <input name="maritial_status" value="Divorced" type="radio" class="validate[required]"> Divorced 
+                                    <input name="maritial_status" value="Married" type="radio" class="validate[required]"> <span>Married</span> 
+                                    <input name="maritial_status" value="Single" type="radio" class="validate[required]" > <span>Single</span> 
+                                    <input name="maritial_status" value="Divorced" type="radio" class="validate[required]"> <span>Divorced</span> 
                                 </div>
                             </div> 
                             <div class="col-md-4">
@@ -851,188 +857,208 @@
                             <div class="col-md-4 business">
                                 <div class="form-cont">
                                     <label>Have in Current Account <span style="color: red">*</span></label>
-                                    <input name="current_account" value="1" type="radio" class="validate[required]"> Yes
-                                    <input name="current_account" value="0" type="radio" class="validate[required]"> No
+                                    <input name="current_account" value="1" type="radio" class="validate[required]"> <span>Yes</span>
+                                    <input name="current_account" value="0" type="radio" class="validate[required]"> <span>No</span>
                                 </div>
                             </div>  
                                 <?php
                                     if($course_id==1 || $course_id==11 || $course_id==36)
                                     {
                                 ?>
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Type of Land <span style="color: red">*</span></label>
-                                        <select class="form-control property" name="type_land">
-                                            <option value="">-----Select-----</option>
-                                            <option value="Residental">Residental</option>
-                                            <option value="Commercial">Commercial</option>
-                                            <option value="Agricultural">Agricultural</option>
-                                        </select>
-                                    </div>
-                                </div>     
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Type of Land <span style="color: red">*</span></label>
+                                    <select class="form-control property" name="type_land">
+                                        <option value="">-----Select-----</option>
+                                        <option value="Residental">Residental</option>
+                                        <option value="Commercial">Commercial</option>
+                                        <option value="Agricultural">Agricultural</option>
+                                    </select>
+                                </div>
+                            </div>     
                                 
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Size of Land <span style="color: red">*</span></label>
-                                        <input name="size_land" type="text" class="form-control property_land">
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Size of Land <span style="color: red">*</span></label>
+                                    <input name="size_land" type="text" class="form-control property_land">
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Registered Authority <span style="color: red">*</span></label>
-                                        <select class="form-control property" name="registered_authority">
-                                            <option value="">-----Select-----</option>
-                                            <option value="Muncipal Corporation">Muncipal Corporation</option>
-                                            <option value="Gram Panchayat">Gram Panchayat</option>
-                                            <option value="Society">Society</option>
-                                            <option value="Others">Others</option>
-                                         </select>
-                                    </div>
-                                </div>    
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Registered Authority <span style="color: red">*</span></label>
+                                    <select class="form-control property" name="registered_authority">
+                                        <option value="">-----Select-----</option>
+                                        <option value="Muncipal Corporation">Muncipal Corporation</option>
+                                        <option value="Gram Panchayat">Gram Panchayat</option>
+                                        <option value="Society">Society</option>
+                                        <option value="Others">Others</option>
+                                     </select>
+                                </div>
+                            </div>    
                                 
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Loan Type <span style="color: red">*</span></label>
-                                        <select class="form-control property" name="loan_type">
-                                            <option value="">-----Select-----</option>
-                                            <?php
-                                                if($course_id==11)
-                                                {
-                                            ?>
-                                            <option value="Fresh Mortgage Loan">Fresh Mortgage Loan</option>
-                                            <option value="Balance Transfer">Balance Transfer</option>
-                                            <option value="BT + Top Up">BT + Top Up</option>
-                                            <?php
-                                                }
-                                                else
-                                                {
-                                            ?>
-                                            <option value="House Purchase">House Purchase</option>
-                                            <option value="Construction">Construction</option>
-                                            <option value="Plot Purchase">Plot Purchase</option>
-                                            <option value="Home Loan Transfer">Home Loan Transfer</option>
-                                            <?php
-                                                }
-                                            ?>
-                                         </select>
-                                    </div>
-                                </div>   
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Property Purchase Cost <span style="color: red">*</span></label>
-                                        <input name="property_purchase_cost" type="text" class="form-control property_land">
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Loan Type <span style="color: red">*</span></label>
+                                    <select class="form-control property" name="loan_type">
+                                        <option value="">-----Select-----</option>
+                                        <?php
+                                            if($course_id==11)
+                                            {
+                                        ?>
+                                        <option value="Fresh Mortgage Loan">Fresh Mortgage Loan</option>
+                                        <option value="Balance Transfer">Balance Transfer</option>
+                                        <option value="BT + Top Up">BT + Top Up</option>
+                                        <?php
+                                            }
+                                            else
+                                            {
+                                        ?>
+                                        <option value="House Purchase">House Purchase</option>
+                                        <option value="Construction">Construction</option>
+                                        <option value="Plot Purchase">Plot Purchase</option>
+                                        <option value="Home Loan Transfer">Home Loan Transfer</option>
+                                        <?php
+                                            }
+                                        ?>
+                                     </select>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Property Address <span style="color: red">*</span></label>
-                                        <input name="property_address" type="text" class="form-control property">
-                                    </div>
-                                </div>   
-                                <?php
-                                    }
-                                    if($pd_id!=8)
-                                    {
-                                ?>          
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Loan Amount <span style="color: red">*</span></label>
-                                        <input name="loan_amount" type="number" class="form-control validate[required,custom[onlyNumberSp]]">
-                                    </div>
+                            </div>   
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Property Purchase Cost <span style="color: red">*</span></label>
+                                    <input name="property_purchase_cost" type="text" class="form-control property_land">
                                 </div>
-                                <?php
-                                    }
-                                ?>
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>House Status <span style="color: red">*</span></label>
-                                        <input name="house_status" value="Parental" class="validate[required]" type="radio"> Parental
-                                        <input name="house_status" value="Rented" class="validate[required]" type="radio"> Rented
-                                        <input name="house_status" value="Owned" class="validate[required]" type="radio"> Owned
-                                    </div>
-                                </div>                        
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Property Address <span style="color: red">*</span></label>
+                                    <input name="property_address" type="text" class="form-control property">
+                                </div>
+                            </div>   
+                            <?php
+                                }
+                                if($pd_id!=8)
+                                {
+                            ?>          
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Loan Amount <span style="color: red">*</span></label>
+                                    <input name="loan_amount" type="number" class="form-control validate[required,custom[onlyNumberSp]]">
+                                </div>
+                            </div>
+                            <?php
+                                }
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>House Status <span style="color: red">*</span></label>
+                                    <input name="house_status" value="Parental" class="validate[required]" type="radio"> <span>Parental</span>
+                                    <input name="house_status" value="Rented" class="validate[required]" type="radio"> <span>Rented</span>
+                                    <input name="house_status" value="Owned" class="validate[required]" type="radio"> <span>Owned</span>
+                                </div>
+                            </div>                        
+                            
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Residence Address <span style="color: red">*</span></label>
+                                    <input name="residence_address" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
+                            <?php
+                                if($pd_id==8)
+                                {
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Office Address <span style="color: red">*</span></label>
+                                    <input name="office_address" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
+                            <?php
+                                }
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>City <span style="color: red">*</span></label>
+                                    <input name="city" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
                                 
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Residence Address <span style="color: red">*</span></label>
-                                        <input name="residence_address" type="text" class="form-control validate[required]">
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Pincode <span style="color: red">*</span></label>
+                                    <input name="pincode" type="number" class="validate[required,,custom[onlyNumberSp],maxSize[6],minSize[6] form-control">
                                 </div>
-                                <?php
-                                    if($pd_id==8)
-                                    {
-                                ?>
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Office Address <span style="color: red">*</span></label>
-                                        <input name="office_address" type="text" class="form-control validate[required]">
-                                    </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Pan Card No. <span style="color: red">*</span></label>
+                                    <input name="pan_card_no" type="text" class="validate[required,maxSize[10],minSize[10] form-control" style="text-transform:uppercase">
                                 </div>
-                                <?php
-                                    }
-                                ?>
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>City <span style="color: red">*</span></label>
-                                        <input name="city" type="text" class="form-control validate[required]">
-                                    </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Aadhar Card No. <span style="color: red">*</span></label>
+                                    <input name="aadhar_card_no" type="text" class="form-control validate[required,maxSize[12],minSize[12]">
                                 </div>
-                                
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Pincode <span style="color: red">*</span></label>
-                                        <input name="pincode" type="number" class="validate[required,,custom[onlyNumberSp],maxSize[6],minSize[6] form-control">
-                                    </div>
+                            </div>                        
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Pan Card <span style="color: red">*</span></label>
+                                    <input name="pan_card_img[]" type="file" class="form-control validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]" multiple>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Pan Card No. <span style="color: red">*</span></label>
-                                        <input name="pan_card_no" type="text" class="validate[required,maxSize[10],minSize[10] form-control" style="text-transform:uppercase">
-                                    </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Aadhar Card <span style="color: red">*</span></label>
+                                    <input name="aadhar_card_img[]" type="file" class="form-control validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]" multiple>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Aadhar Card No. <span style="color: red">*</span></label>
-                                        <input name="aadhar_card_no" type="text" class="form-control validate[required,maxSize[12],minSize[12]">
-                                    </div>
-                                </div>                        
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Pan Card <span style="color: red">*</span></label>
-                                        <input name="pan_card_img[]" type="file" class="form-control validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]" multiple>
-                                    </div>
+                            </div>                        
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <?php
+                                        if($pd_id==4):
+                                    ?>
+                                    <label>Bank Statement (Last 1 Year) <span style="color: red">*</span></label>
+                                    <?php
+                                        else:
+                                    ?>
+                                    <label>Bank Statement (Last 3 Months) <span style="color: red">*</span></label>
+                                    <?php
+                                        endif;
+                                    ?>
+                                    <input name="bank_statement_img[]" type="file" class="form-control validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]" multiple>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Aadhar Card <span style="color: red">*</span></label>
-                                        <input name="aadhar_card_img[]" type="file" class="form-control validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]" multiple>
-                                    </div>
-                                </div>                        
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Bank Statement(Last 3 Months) <span style="color: red">*</span></label>
-                                        <input name="bank_statement_img[]" type="file" class="form-control validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]" multiple>
-                                    </div>
+                            </div>
+                            <div class="col-md-4 income_per_month" style="display: none;">
+                                <div class="form-cont">
+                                    <?php
+                                        if($pd_id==8):
+                                    ?>
+                                    <label>Latest ITR (Last 1 Year)<span style="color: red">*</span></label>
+                                    <?php
+                                        else:
+                                    ?>
+                                    <label>Latest ITR (Last 3 Years)<span style="color: red">*</span></label>
+                                    <?php
+                                        endif;
+                                    ?>
+                                    <input name="latest_itr[]" type="file" class="form-control income_per_month_req validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]" multiple>
                                 </div>
-                                <div class="col-md-4 income_per_month" style="display: none;">
-                                    <div class="form-cont">
-                                        <label>Latest ITR (Last Three Years)<span style="color: red">*</span></label>
-                                        <input name="latest_itr[]" type="file" class="form-control income_per_month_req validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]" multiple>
-                                    </div>
-                                </div> 
-                                <?php
-                                    if($course_id==1 || $course_id==11 || $course_id==36)
-                                    {
-                                ?>
-                                <div class="col-md-4">
-                                    <div class="form-cont">
-                                        <label>Property Site Map <span style="color: red">*</span></label>
-                                        <input name="property_site_map_img[]" type="file" class="form-control property validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]" multiple>
-                                    </div>
-                                </div>   
-                                <?php
-                                    }
-                                ?>                     
+                            </div> 
+                            <?php
+                                if($course_id==1 || $course_id==11 || $course_id==36)
+                                {
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Property Site Map <span style="color: red">*</span></label>
+                                    <input name="property_site_map_img[]" type="file" class="form-control property validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]" multiple>
+                                </div>
+                            </div>   
+                            <?php
+                                }
+                            ?>                     
                             <div class="col-md-4 salarry_slip" style="display: none;">
                                 <div class="form-cont">
                                     <label>Salary Slip(Last 3 Months) <span style="color: red">*</span></label>
@@ -1129,8 +1155,8 @@
                             <div class="col-md-3">
                                 <div class="form-cont">
                                     <label>Any Medical Conditions <span style="color: red">*</span></label>
-                                    <input name="medical" value="1" type="radio" class="medical validate[required]"/> Yes
-                                    <input name="medical" value="0" type="radio" class="medical validate[required]" checked="" /> No
+                                    <input name="medical" value="1" type="radio" class="medical validate[required]"/> <span>Yes</span>
+                                    <input name="medical" value="0" type="radio" class="medical validate[required]" checked="" /> <span>No</span>
                                 </div>
                             </div> 
                             <div class="col-md-4 medical_yes" style="display: none;">
@@ -1183,8 +1209,8 @@
                             <div class="col-md-4">
                                 <div class="form-cont">
                                     <label>Smoker <span style="color: red">*</span></label>
-                                    <input name="smoker" value="1" type="radio" class="validate[required]"/> Yes
-                                    <input name="smoker" value="0" type="radio" class="validate[required]" checked="" /> No
+                                    <input name="smoker" value="1" type="radio" class="validate[required]"/> <span>Yes</span>
+                                    <input name="smoker" value="0" type="radio" class="validate[required]" checked="" /> <span>No</span>
                                 </div>
                             </div> 
                             <div class="col-md-4">
@@ -1213,9 +1239,9 @@
                             <div class="col-md-4">
                                 <div class="form-cont">
                                     <label>Going With <span style="color: red">*</span></label>
-                                    <input name="going_with" value="Group" type="radio" class="validate[required]"/> Group
-                                    <input name="going_with" value="Family" type="radio" class="validate[required]" /> Family
-                                    <input name="going_with" value="Others" type="radio" class="validate[required]" /> Others
+                                    <input name="going_with" value="Group" type="radio" class="validate[required]"/> <span>Group</span>
+                                    <input name="going_with" value="Family" type="radio" class="validate[required]" /> <span>Family</span>
+                                    <input name="going_with" value="Others" type="radio" class="validate[required]" /> <span>Others</span>
                                 </div>
                             </div> 
                             <div class="col-md-4">
@@ -1305,8 +1331,8 @@
                             <div class="col-md-4">
                                 <div class="form-cont">
                                     <label>Ownership <span style="color: red">*</span></label>
-                                    <input name="ownership" type="radio" class="validate[required]"/> Own
-                                    <input name="ownership" type="radio" class="validate[required]" /> Rented
+                                    <input name="ownership" type="radio" class="validate[required]"/> <span>Own</span>
+                                    <input name="ownership" type="radio" class="validate[required]" /> <span>Rented</span>
                                </div>
                             </div> 
                             <!-- End Home Insurance -->
@@ -1318,25 +1344,24 @@
                             <div class="col-md-8">
                                 <div class="form-cont">
                                     <label>Vechile Type <span style="color: red">*</span></label>
-                                    <input name="vechile" value="Private Car" type="radio" class="validate[required]"/> Private Car
-                                    <input name="vechile" value="Commercial Vehicle" type="radio" class="validate[required]" /> Commercial Vehicle
-                                    <input name="vechile" value="School Bus" type="radio" class="validate[required]" /> School Bus
-                                    <input name="vechile" value="Three Wheeler" type="radio" class="validate[required]" /> Three Wheeler
+                                    <input name="vechile" value="Private Car" type="radio" class="validate[required]"/> <span>Private Car</span>
+                                    <input name="vechile" value="Commercial Vehicle" type="radio" class="validate[required]" /> <span>Commercial Vehicle</span>
+                                    <input name="vechile" value="School Bus" type="radio" class="validate[required]" /> <span>School Bus</span>
+                                    <input name="vechile" value="Three Wheeler" type="radio" class="validate[required]" /> <span>Three Wheeler</span>
                                </div>
                             </div>                         
                             <div class="col-md-4">
                                 <div class="form-cont">
                                     <label>Policy Type <span style="color: red">*</span></label>
-                                    <input name="policy_type" value="Comprehensive" type="radio" class="validate[required]"/> Comprehensive
-                                    <input name="policy_type" value="TP only" type="radio" class="validate[required]"> 
-                                    TP Only
+                                    <input name="policy_type" value="Comprehensive" type="radio" class="validate[required]"/> <span>Comprehensive</span>
+                                    <input name="policy_type" value="TP only" type="radio" class="validate[required]"><span>TP Only</span>
                                 </div>
                             </div>                         
                             <div class="col-md-4">
                                 <div class="form-cont">
                                     <label>Vechile Details<span style="color: red">*</span></label>
-                                    <input name="vechile_details" value="New Vehicle" type="radio" class="vechile_details validate[required]"> New Vehicle
-                                    <input name="vechile_details" value="Old vehicle" type="radio" class="vechile_details1 validate[required]" checked=""> Old vehicle
+                                    <input name="vechile_details" value="New Vehicle" type="radio" class="vechile_details validate[required]"> <span>New Vehicle</span>
+                                    <input name="vechile_details" value="Old vehicle" type="radio" class="vechile_details1 validate[required]" checked=""> <span>Old vehicle</span>
                                 </div>
                             </div> 
                             <div class="col-md-3 new_vechile" style="display: none">
@@ -1413,23 +1438,36 @@
                         </div> 
                         <div class="clearfix"></div>
                         <div class="row text-center">
+                            <?php
+                                if($pd_id!=9)
+                                {
+                            ?>
                             <input type="submit" name="business_register" value="SUBMIT" class="btn btn-primary sender_submit">
+                            <?php
+                                }
+                                else
+                                {
+                            ?>
+                            <input type="submit" name="business_register" value="Get a Call from advisor" class="btn btn-primary sender_submit">
+                            <?php
+                                }
+                            ?>
                         </div>
                     </form>
                     <!-- <a href="#myModal4" data-toggle="modal" class="btn darkGreyBtn red-bg-btn back_color" style="color: #fff;">Apply Now</a>  -->
                 </div>
+            </div>
+        </div>
+    </section>
+<br>
+ 
+<section class="section-side-image clearfix amit">
 
-                <?php
-                    }
-                    else
-                    {
-                ?>
-                <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-                    <a href="#myModal4" data-toggle="modal" class="btn darkGreyBtn red-bg-btn back_color" style="color: #fff;">Get a Call from advisor</a> 
-                </div>
-                <?php
-                    }
-                ?>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
                 <?php
                     if($course_id==29):
                 ?>
@@ -1553,8 +1591,28 @@
                 <?php
                     else:
                 ?>
-                <hr>
-                <?= $sql1['description'];?>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#Information">Information</a></li>
+                    <li><a data-toggle="tab" href="#current">Current ROI and Offer</a></li>
+                    <li><a data-toggle="tab" href="#features">Features and Benefits</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="Information" class="tab-pane fade in active">
+                        <div style="padding-top: 20px;color: #000;">
+                            <?= $sql1['information'];?>
+                        </div>
+                    </div>
+                    <div id="current" class="tab-pane fade">
+                        <div style="padding-top: 20px;color: #000;">
+                            <?= $sql1['current_roi'];?>
+                        </div>
+                    </div>                    
+                    <div id="features" class="tab-pane fade">
+                        <div style="padding-top: 20px;color: #000;">
+                            <?= $sql1['features'];?>
+                        </div>
+                    </div>
+                </div>
                 <?php
                     endif;
                 ?>

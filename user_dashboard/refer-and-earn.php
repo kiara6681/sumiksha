@@ -9,10 +9,13 @@ if(isset($_POST['addnews_events']))
     $name = $_REQUEST['name'];
     $product_id = $_REQUEST['product_id'];
     $sub_product_id = $_REQUEST['sub_product_id'];
+    $required_amount = $_REQUEST['required_amount'];
+    $state_id = $_REQUEST['state_id'];
+    $city_id = $_REQUEST['city_id'];
 
     $start_date = date("Y-m-d H:i:s");
 
-    if(mysqli_query($conn, "INSERT INTO `refer_earn` (`name`, `phone`, `user_id`, `product_id`, `sub_product_id`, `created_at`) VALUES ('$name', '$phone', '$user_id', '$product_id', '$sub_product_id', '$start_date')"))
+    if(mysqli_query($conn, "INSERT INTO `refer_earn` (`name`, `phone`, `user_id`, `product_id`, `sub_product_id`, `required_loan`, `state_id`, `city_id`, `created_at`) VALUES ('$name', '$phone', '$user_id', '$product_id', '$sub_product_id', '$required_amount', '$state_id', '$city_id', '$start_date')"))
     {
         echo "<script language='javascript'>alert('Successfully Submited !');window.location ='refer-and-earn.php';</script>";
     }
@@ -43,6 +46,23 @@ if(isset($_POST['addnews_events']))
                 {
                     //alert(data);
                     $("#subcategory").html(data);
+                }
+            });
+        });        
+
+        // Get City By State ID
+        $("#state").change(function(){
+            
+            var stateid = $("#state").val();
+            //alert(categoryid);
+            $.ajax({
+                url : "<?= base_url();?>ajaxPages/getCity.php",
+                type : "POST",
+                data : {stateid:stateid},
+                success : function(data)
+                {
+                    //alert(data);
+                    $("#city").html(data);
                 }
             });
         });
@@ -92,7 +112,15 @@ if(isset($_POST['addnews_events']))
                                 <div class="col-sm-10">
                                     <input type="tel" name="phone" class="form-control" required>
                                 </div>
-                            </div>                             
+                            </div>  
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Required Loan Amount</label>
+                                <div class="col-sm-10">
+                                    <input type="number" name="required_amount" class="form-control" required>
+                                </div>
+                            </div>  
+
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Product</label>
                                 <div class="col-sm-10">
@@ -119,8 +147,31 @@ if(isset($_POST['addnews_events']))
                                 </div>
                             </div>
 
-                            <div class="hr-line-dashed"></div>
-     
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">State</label>
+                                <div class="col-sm-10">
+                                    <select id="state" class="form-control" name="state_id" required>
+                                        <option value="">Select State</option>
+                                        <?php 
+                                            $sql_cmp = $conn->query("SELECT * from states order by id asc");
+                                            while($data_cmp=mysqli_fetch_array($sql_cmp))
+                                            {
+                                        ?>
+                                            <option value="<?= $data_cmp['id'];?>"><?= $data_cmp['name'];?></option>
+                                        <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">City</label>
+                                <div class="col-sm-10">
+                                    <select id="city" name="city_id" class="form-control" required>
+                                        <option value="">Select City</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">
                                     <input type="submit" value="Save" name="addnews_events" class="btn btn-primary">
@@ -138,9 +189,13 @@ if(isset($_POST['addnews_events']))
                                 <th>Phone</th>
                                 <th>Product</th>
                                 <th>Sub Product</th>
+                                <th>Required loan Amount</th>
+                                <th>Approved loan Amount</th>
+                                <th>Login Bank</th>
+                                <th>Login Date</th>
                                 <th>Created Date</th>
                                 <th>Approval</th>
-                                <th>Reject Reason</th>
+                                <th>Status</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -156,6 +211,10 @@ if(isset($_POST['addnews_events']))
                                     <td><?php echo $data_cmp['phone']; ?></td>
                                     <td><?php echo $data_cmp['product']; ?></td>
                                     <td><?php echo $data_cmp['sub_product']; ?></td>
+                                    <td style="color: red"><?php echo $data_cmp['required_loan']; ?></td>
+                                    <td style="color: green"><?php echo $data_cmp['approve_loan']; ?></td>
+                                    <td style="color: green"><?php echo $data_cmp['login_bank']; ?></td>
+                                    <td style="color: green"><?php echo $data_cmp['login_date']; ?></td>
                                     <td><?php echo $data_cmp['created_at']; ?></td>
                                     <td>
                                         <?php
@@ -204,15 +263,21 @@ if(isset($_POST['addnews_events']))
                                             }
                                         ?>
                                     </td>
+                                    <?php
+                                        if($data_cmp['status']==1):
+                                    ?>
                                     <td>
-                                        <?php
-                                            if($data_cmp['status']==2)
-                                            {
-                                                echo $data_cmp['reject_reason'];
-                                            }
-                                        ?>
-                                        
+                                        Approved
                                     </td>
+                                    <?php
+                                        else:
+                                    ?>
+                                    <td>
+                                        <?= $data_cmp['reject_reason'];?>
+                                    </td>
+                                    <?php
+                                        endif;
+                                    ?>
                                 </tr>
                                 <div id="<?= $data_cmp['id'];?>" class="modal fade animated shake" role="dialog">
                                     <div class="modal-dialog">

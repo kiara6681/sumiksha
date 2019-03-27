@@ -79,7 +79,55 @@ if(isset($_POST['submit_statement_request']))
                                 {
                             ?>
                             <li>
-                                <a href="<?= base_url();?>product/<?= $row1['metatitle'];?>">
+                                <li> 
+                                    <?php
+                                        if($row1['id']==18){
+                                    ?>
+                                        <a href="https://health.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                                    <?php
+                                        }
+                                        elseif($row1['id']==19){
+                                    ?>
+                                        <a href="https://termlife.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                                    <?php
+                                        }
+                                        elseif($row1['id']==26){
+                                    ?>
+                                        <a href="https://travel.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                                    <?php
+                                        }
+                                        elseif($row1['id']==27){
+                                    ?>
+                                        <a href="http://sme.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                                    <?php
+                                        }
+                                        if($row1['id']==28){
+                                    ?>
+                                        <a href="http://home.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                                    <?php
+                                        }
+                                        elseif($row1['id']==51){
+                                    ?>
+                                        <a href="https://twowheeler.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                                    <?php
+                                        }
+                                        elseif($row1['id']==53){
+                                    ?>
+                                        <a href="https://ci.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                                    <?php
+                                        }
+                                        elseif($row1['id']==54){
+                                    ?>
+                                        <a href="http://cancerinsurance.policybazaar.com/ci?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                                    <?php
+                                        }
+                                        elseif($row1['id']!=18 && $row1['id']!=19 && $row1['id']!=26 && $row1['id']!=27 && $row1['id']!=28 && $row1['id']!=51 && $row1['id']!=53 && $row1['id']!=54)
+                                        {
+                                    ?>
+                                    <a href="<?= base_url();?>product/<?= $row1['metatitle'];?>">
+                                    <?php
+                                        }
+                                    ?>
                                     <span class="nav-label"><?= $row1['name'];?></span>
                                 </a>
                             </li>

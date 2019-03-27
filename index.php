@@ -363,56 +363,33 @@
                             if($row['id']==19){
                         ?>
                         <a href="https://termlife.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
-                            <div class="img">
-                                <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 75px;height: 75px;margin-top: 30px;">
-                                <!-- <i class="" id="fa_<?= $i;?>" style="font-size: 70px;padding-top: 20px;color: #fff;" aria-hidden="true"></i> -->
-                            </div>
-                            <div class="info">
-                                <h3><?= $row['name'];?></h3>
-                            </div>
-                        </a>
                         <?php
                             }
                             elseif($row['id']==18){
                         ?>
                         <a href="https://health.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
-                            <div class="img">
-                                <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 75px;height: 75px;margin-top: 30px;">
-                                <!-- <i class="" id="fa_<?= $i;?>" style="font-size: 70px;padding-top: 20px;color: #fff;" aria-hidden="true"></i> -->
-                            </div>
-                            <div class="info">
-                                <h3><?= $row['name'];?></h3>
-                            </div>
-                        </a>
                         <?php
                             }
                             elseif($row['id']==53){
                         ?>
                         <a href="https://ci.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
-                            <div class="img">
-                                <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 75px;height: 75px;margin-top: 30px;">
-                                <!-- <i class="" id="fa_<?= $i;?>" style="font-size: 70px;padding-top: 20px;color: #fff;" aria-hidden="true"></i> -->
-                            </div>
-                            <div class="info">
-                                <h3><?= $row['name'];?></h3>
-                            </div>
-                        </a>
                         <?php
                             }
                             else{
                         ?>
                         <a href="<?= base_url();?>product/<?= $row['metatitle'];?>">
+                        <?php
+                            }
+                        ?>
                             <div class="img">
-                                <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 75px;height: 75px;margin-top: 30px;">
+                                <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 45px;height: 45px;margin-top: 30px;">
+                                    <h5 style="color: #fff;"><?= $row['name'];?></h5>
                                 <!-- <i class="" id="fa_<?= $i;?>" style="font-size: 70px;padding-top: 20px;color: #fff;" aria-hidden="true"></i> -->
                             </div>
                             <div class="info">
                                 <h3><?= $row['name'];?></h3>
                             </div>
                         </a>
-                        <?php
-                            }
-                        ?>
                         
                     </div>
 
@@ -423,7 +400,8 @@
                 <div class="col-xs-5ths col-lg-5ths col-md-5ths col-sm-5ths testimonialMobilelBlk item-hover circle colored effect6 scale_down_up wow bounceInLeft slower">
                     <a href="<?= base_url();?>credit_card">
                         <div class="img">
-                            <img src="<?= base_url();?>frontend_assets/images/credit-card.png" style="width: 75px;height: 75px;margin-top: 30px;">
+                            <img src="<?= base_url();?>frontend_assets/images/credit-card.png" style="width: 45px;height: 45px;margin-top: 30px;">
+                            <h5 style="color: #fff;">Credit Card</h5>
                         </div>
                         <div class="info">
                             <h3>Credit Card</h3>

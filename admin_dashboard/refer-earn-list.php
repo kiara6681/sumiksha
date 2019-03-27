@@ -25,7 +25,13 @@ error_reporting(0);
         
         $reject=$_REQUEST['reject'];
 
-        $approve = "UPDATE `refer_earn` SET `status` = '".$delt."', `reject_reason` = '".$reject."' WHERE `id` = '".$id."'";
+        $login_bank=$_REQUEST['login_bank'];
+
+        $login_date=$_REQUEST['login_date'];
+
+        $approved_loan=$_REQUEST['approved_loan'];
+
+        $approve = "UPDATE `refer_earn` SET `status` = '".$delt."', `reject_reason` = '".$reject."', `login_bank` = '".$login_bank."', `login_date` = '".$login_date."', `approve_loan` = '".$approved_loan."' WHERE `id` = '".$id."'";
 
         if($conn->query($approve))
         {
@@ -91,6 +97,10 @@ error_reporting(0);
                                 <th>Phone</th>
                                 <th>Product</th>
                                 <th>Sub Product</th>
+                                <th>Required Loan Amount</th>
+                                <th>Approved Loan Amount</th>
+                                <th>Login Bank</th>
+                                <th>Login Date</th>
                                 <th>Created Date</th>
                                 <th>Approval</th>
                                 <th>Status</th>
@@ -110,6 +120,10 @@ error_reporting(0);
                                     <td><?php echo $data_cmp['phone']; ?></td>
                                     <td><?php echo $data_cmp['product']; ?></td>
                                     <td><?php echo $data_cmp['sub_product']; ?></td>
+                                    <td style="color: red"><?php echo $data_cmp['required_loan']; ?></td>
+                                    <td style="color: green"><?php echo $data_cmp['approve_loan']; ?></td>
+                                    <td style="color: green"><?php echo $data_cmp['login_bank']; ?></td>
+                                    <td style="color: green"><?php echo $data_cmp['login_date']; ?></td>
                                     <td><?php echo $data_cmp['created_at']; ?></td>
                                     <td>
                                         <?php
@@ -160,9 +174,21 @@ error_reporting(0);
                                             }
                                         ?>
                                     </td>
+                                    <?php
+                                        if($data_cmp['status']==1):
+                                    ?>
+                                    <td>
+                                        Approved
+                                    </td>
+                                    <?php
+                                        else:
+                                    ?>
                                     <td>
                                         <?= $data_cmp['reject_reason'];?>
                                     </td>
+                                    <?php
+                                        endif;
+                                    ?>
                                 </tr>
                                 <div id="<?= $data_cmp['id'];?>" class="modal fade animated bounceIn" role="dialog">
                                     <div class="modal-dialog">
@@ -174,17 +200,44 @@ error_reporting(0);
                                             </div>
                                             <form action="" method="post">
                                                 <div class="modal-body">
-                                                    <input type="hidden" id="refer_earn_<?= $data_cmp['id'];?>" name="delt" value="">
+                                                    <input type="hidden" id="refer_earn_<?= $data_cmp['id'];?>" name="delt">
                                                     <input type="hidden" id="appr" name="appr" value="<?= $data_cmp['id'];?>">
-                                                    <input type="text" class="form-control reject" name="reject" placeholder="write here...">
+                                                    <div class="form-group login_show" style="display: none">
+                                                        <label>Login Bank <span style="color: red">*</span></label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                                            <input type="text" name="login_bank" class="form-control login_req" value="<?php echo $data_cmp['login_bank']; ?>">
+                                                        </div>
+                                                    </div>                                                    
+                                                    <div class="form-group login_show" id="data_1" style="display: none">
+                                                        <label>Login Date <span style="color: red">*</span></label>
+                                                        <div class="input-group date">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            <input type="text" name="login_date" id="datepicker" class="form-control login_req" value="<?php echo $data_cmp['login_date']; ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group reject">
+                                                        <label>Write Here <span style="color: red">*</span></label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                                            <input type="text" name="reject" class="form-control">
+                                                        </div>
+                                                    </div>                                                     
+                                                    <div class="form-group approve_tab" style="display: none">
+                                                        <label>Disbursed Loan Amount <span style="color: red">*</span></label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                                            <input type="text" name="approved_loan" class="form-control approve_req" value="<?php echo $data_cmp['approve_loan']; ?>">
+                                                        </div>
+                                                    </div>  
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <input class="btn btn-info reject_hide login" id="<?= $data_cmp['id'];?>" type="button" name="login" value="Login">
-                                                    <input class="btn btn-primary reject_hide Inprocess"  id="<?= $data_cmp['id'];?>" type="button" name="inprocess" value="Inprocess">
+                                                    <button class="btn btn-info reject_hide login" id="<?= $data_cmp['id'];?>" data-id="<?= $data_cmp['product_id'];?>" type="button" name="login">Login</button>
+                                                    <button class="btn btn-primary reject_hide Inprocess" id="<?= $data_cmp['id'];?>" type="button" name="inprocess">Inprocess</button>
                                                     <button class="btn btn-danger reject_hide file_pending"  id="<?= $data_cmp['id'];?>" type="button" name="file_pending">File Pending</button>
                                                     <button class="btn btn-success reject_hide approve"  id="<?= $data_cmp['id'];?>" type="button" name="approve">Approve</button>
                                                     <button class="btn btn-reject reject_hide dis_appr"  id="<?= $data_cmp['id'];?>" type="button">Reject</button>
-                                                    <button class="btn btn-info reject" type="submit" name="dis_appr" style=" float: left;">Submit</button>
+                                                    <button class="btn btn-info reject approve_tab login_show" type="submit" name="dis_appr" style=" float: left;">Submit</button>
                                                 </div>
                                             </form>
                                         </div>

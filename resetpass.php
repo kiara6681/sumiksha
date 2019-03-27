@@ -30,7 +30,7 @@ error_reporting(0);
                         
                 if($update_query)
                 {
-                    $active = mysqli_query($conn, "update login set activation_code='' where username='$email1'");
+                    $active = mysqli_query($conn, "update login set activation_code=NULL where username='$email1'");
                     if($active)
                     {
                         echo "<script language='javascript'>alert('Password has been changed successfully');window.location = 'https://sumikshaservices.com/login';</script>";;

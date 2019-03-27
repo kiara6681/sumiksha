@@ -69,17 +69,23 @@ if(isset($_POST['addfilmlocation1']))
 
     $course_id = $_REQUEST['course_id'];
     $sort_by = $_REQUEST['sort_by'];
+
     if(empty($sort_by))
     {
         $sort_by = NULL;
     }
-    $description1 = $_REQUEST['description'];
-    $description = str_replace("'","\'",$description1);    
-    $banner_description = $_REQUEST['banner_description'];
-    $banner_description = str_replace("'","\'",$banner_description);
+
+    $information = $_REQUEST['information'];
+    $information = str_replace("'","\'",$information); 
+
+    $current_roi = $_REQUEST['current_roi'];
+    $current_roi = str_replace("'","\'",$current_roi);
+    
+    $features = $_REQUEST['features'];
+    $features = str_replace("'","\'",$features);
 
 
-    if(mysqli_query($conn, "INSERT INTO `course1` (`name`, `metatitle`, `image`, `icon`, `description`, `banner_description`, `course_id`, `sort_by`) VALUES ('".$name."', '".$metatitle."', '".$p_image1."', '".$p_image2."', '".$description."',  '".$banner_description."', '".$course_id."', '".$sort_by."')"))
+    if(mysqli_query($conn, "INSERT INTO `course1` (`name`, `metatitle`, `image`, `icon`, `information`, `current_roi`, `features`, `course_id`, `sort_by`) VALUES ('".$name."', '".$metatitle."', '".$p_image1."', '".$p_image2."', '".$information."',  '".$current_roi."',  '".$features."', '".$course_id."', '".$sort_by."')"))
     {
         echo "<script language='javascript'>alert('Successfully Submited !');window.location = 'course1-list.php';</script>";
     }
@@ -185,15 +191,7 @@ if(isset($_POST['addfilmlocation1']))
                                 <div class="col-sm-10">
                                     <input type="text" name="name" class="form-control" required>
                                 </div>
-                            </div>      
- 
-<!--                             <div class="form-group">
-                                <label class="col-sm-2 control-label">metatitle</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="metatitle" class="form-control">
-                                </div>
-                            </div>  -->     
-     
+                            </div>             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Icon</label>
                                 <div class="col-sm-10">
@@ -206,16 +204,22 @@ if(isset($_POST['addfilmlocation1']))
                                     <input type="file" name="p_image1" class="form-control">
                                 </div>
                             </div>      
-
-<!--                            <div class="form-group"><label class="col-sm-2 control-label">Banner Description</label>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Information</label>
                                 <div class="col-sm-10">
-                                    <textarea placeholder="banner_description" class="form-control summernote" name="banner_description"> </textarea>
+                                    <textarea placeholder="Information" class="form-control summernote" name="information"></textarea>
                                 </div>
-                            </div>
--->
-                            <div class="form-group"><label class="col-sm-2 control-label">Description</label>
+                            </div>                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Current ROI and Offer</label>
                                 <div class="col-sm-10">
-                                    <textarea placeholder="description" class="form-control summernote" name="description"> </textarea>
+                                    <textarea placeholder="Current ROI and Offer" class="form-control summernote" name="current_roi"></textarea>
+                                </div>
+                            </div>                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Features and Benefits</label>
+                                <div class="col-sm-10">
+                                    <textarea placeholder="features" class="form-control summernote" name="features"></textarea>
                                 </div>
                             </div>
 

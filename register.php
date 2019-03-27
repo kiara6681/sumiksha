@@ -117,6 +117,7 @@
         $first_name=$_REQUEST['first_name'];
         $phone=$_REQUEST['phone'];
         $email=$_REQUEST['email'];
+        $token = md5($email.time());
         $emp_code=$_REQUEST['emp_code'];
         $dob=$_REQUEST['dob'];
         $pincode=$_REQUEST['pincode'];
@@ -129,14 +130,49 @@
 
         $date=date("Y-m-d H:i:s");
 
-        if(mysqli_query($conn, "INSERT INTO `login` (`name`,`username`,`password`,`phone`,`pincode`,`dob`,`ref_code`,`age`,`pan_card`,`aadhar_card`,`cancel_cheque`,`payment_receipt`,`pan_card_img`,`aadhar_card_img`,`created_at`,`status`) VALUES ('$first_name','$email','$password','$phone','$pincode','$dob','$referral_code','$age','$pan_card','$aadhar_card','$p_image1','$p_image2','$p_image3','$p_image4','$date',0)"))
+        if(mysqli_query($conn, "INSERT INTO `login` (`name`,`username`,`password`,`verify_token`,`phone`,`pincode`,`dob`,`ref_code`,`age`,`pan_card`,`aadhar_card`,`cancel_cheque`,`payment_receipt`,`pan_card_img`,`aadhar_card_img`,`created_at`,`status`) VALUES ('$first_name','$email','$password','$token','$phone','$pincode','$dob','$referral_code','$age','$pan_card','$aadhar_card','$p_image1','$p_image2','$p_image3','$p_image4','$date',0)"))
         {
             $last_id = $conn->insert_id;
 
             if(mysqli_query($conn, "INSERT INTO `user_roles` (`role_id`,`user_id`,`created_at`) VALUES ('$emp_code','$last_id','$date')"))
             {
-                $succMSG = "Successfully Registered";      
-            }
+
+                // Send Email Verification link 
+                $message="";
+                $message .="Verify Email ID link : <a href='".base_url()."verifyemail.php?email=$email&verify_token=$token'> Click Here</a>";
+                $subject  ="Email Verification"; //like--- Resume From Website
+                $headers  ="";
+                include("PHPMailer/PHPMailerAutoload.php"); //Here magic Begen we include PHPMailer Library.
+                include("PHPMailer/class.phpmailer.php");   
+                $mail = new PHPMailer;
+                                              // Enable verbose debug output
+                $mail->isSMTP(); // Set mailer to use SMTP
+                $mail->Host = 'mailout.one.com;';  // Specify main and backup SMTP servers
+                $mail->SMTPAuth = true; // Enable SMTP authentication
+                $mail->Username = 'test@sumikshaservices.com';// SMTP username 
+                $mail->Password = '?t@NYp^L.Fay'; // SMTP password 
+                $mail->SMTPSecure = 'tls';// Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 25; 
+                $mail->SMTPDebug = 0; // TCP port to connect to
+                $mail->setFrom('test@sumikshaservices.com', 'Email Verification'); //You Can add your own From mail
+                $mail->addAddress($email); // Add a recipient id where you want to send mail 
+                
+                $mail->addAttachment($_FILES['cv']['tmp_name'],$_FILES['cv']['name']); //This line Use to Keep User Txt,Doc,pdf file ,attachment      
+                $mail->addReplyTo('info@sumikshaservices.com'); //where you want reply from user
+                $mail->isHTML(true); 
+                $mail->Subject=''.$subject;
+                $mail->Body=''.$message;
+                if(!$mail->send()) 
+                    {                            
+                        echo "Error in Form :- $mail->ErrorInfo!. We will Fix This soon";
+                    }
+                else 
+                    {    
+                        echo "<script language='javascript'>alert('Verify Your Email ID. Successfully Registered!');window.location='login';</script>";              
+                    }
+                return true;  
+                    //$succMSG = "Verify Your Email ID. Successfully Registered";      
+                }
         }
         else{
             $errorMSG = "Not Registered";
@@ -145,9 +181,9 @@
 ?>
 <script type="text/javascript">
     $(document).ready(function(){
+
         $("#register_email").change(function(){
             var username = $("#register_email").val();
-
             $.ajax({
                 type:"post",
                 url:"<?= base_url();?>ajaxPages/checkEmail",
@@ -170,6 +206,7 @@
                 }
             })
         });
+
         $("#emp_code").change(function(){
             var emp_code = $("#emp_code").val();
             if(emp_code!=''){
@@ -230,12 +267,14 @@
                                 <input name="first_name" size="20" type="text" class="validate[required] form-control"/>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-cont">
                                 <label>Mobile No. <span style="color: red">*</span></label>
                                 <input name="phone" type="text" class="validate[required,custom[phone],maxSize[12],minSize[10]] form-control" placeholder="9876543210" />
                             </div>
-                        </div>                         
+                        </div>     
+
                         <div class="col-md-6">
                             <div class="form-cont">
                                 <label>Email Address <span style="color: red">*</span></label>
@@ -243,6 +282,7 @@
                                 <span id="email_message"></span>
                             </div>
                         </div> 
+
                         <div class="col-md-6">
                             <div class="form-cont">
                                 <label>Select <span style="color: red">*</span></label>
@@ -317,6 +357,7 @@
                                 <input name="p_image4" type="file" class="form-control reg_franchise_reg"/>
                             </div>
                         </div> 
+
                         <div class="col-md-6">
                             <div class="form-cont">
                                 <label>Referral Code</label>
@@ -330,6 +371,7 @@
                                 <input name="password" type="password" class="validate[required] form-control" placeholder="******" />
                             </div>
                         </div>
+
                         <div class="col-md-12">
                             <div class="form-cont">
                                 <input name="check" type="checkbox"class="validate[required]" style="float: left;margin-right: 10px;" /> <p>You Agree to our <a href="javascript:;" style="color: #002e8a;text-decoration: underline;font-weight: 600;"> Privacy Policy</a></p>

@@ -75,27 +75,30 @@ if(isset($_POST['addcourse1']))
     $course_id = $_REQUEST['course_id'];
     $sort_by = $_REQUEST['sort_by'];
 
-    $description1 = $_REQUEST['description'];
-    $description = str_replace("'","\'",$description1);
+    $information = $_REQUEST['information'];
+    $information = str_replace("'","\'",$information); 
+
+    $current_roi = $_REQUEST['current_roi'];
+    $current_roi = str_replace("'","\'",$current_roi);
     
-    $banner_description = $_REQUEST['banner_description'];
-    $banner_description = str_replace("'","\'",$banner_description);
+    $features = $_REQUEST['features'];
+    $features = str_replace("'","\'",$features);
     
     
     if($p_image1)
     {
-        mysqli_query($conn, "UPDATE `course1` SET `name` = '$name', `image` = '$p_image1', `metatitle` = '$metatitle', `description` = '$description', `banner_description` = '$banner_description', `course_id` = '$course_id', `sort_by` = '$sort_by' WHERE `id` = $id;");
+        mysqli_query($conn, "UPDATE `course1` SET `name` = '$name', `image` = '$p_image1', `metatitle` = '$metatitle', `information` = '$information', `current_roi` = '$current_roi', `features` = '$features', `course_id` = '$course_id', `sort_by` = '$sort_by' WHERE `id` = $id;");
         echo "<script language='javascript'>alert('Successfully Updated !');window.location = 'course1-list.php';</script>";
     }    
     elseif($p_image2)
     {
-        mysqli_query($conn, "UPDATE `course1` SET `name` = '$name', `icon` = '$p_image2', `metatitle` = '$metatitle', `description` = '$description', `banner_description` = '$banner_description', `course_id` = '$course_id', `sort_by` = '$sort_by' WHERE `id` = $id;");
+        mysqli_query($conn, "UPDATE `course1` SET `name` = '$name', `icon` = '$p_image2', `metatitle` = '$metatitle', `information` = '$information', `current_roi` = '$current_roi', `features` = '$features', `course_id` = '$course_id', `sort_by` = '$sort_by' WHERE `id` = $id;");
         echo "<script language='javascript'>alert('Successfully Updated !');window.location = 'course1-list.php';</script>";
     }
     
     else
     {
-        mysqli_query($conn, "UPDATE `course1` SET `name` = '$name', `metatitle` = '$metatitle', `description` = '$description', `banner_description` = '$banner_description', `course_id` = '$course_id', `sort_by` = '$sort_by' WHERE `id` = $id;");
+        mysqli_query($conn, "UPDATE `course1` SET `name` = '$name', `metatitle` = '$metatitle', `information` = '$information', `current_roi` = '$current_roi', `features` = '$features', `course_id` = '$course_id', `sort_by` = '$sort_by' WHERE `id` = $id;");
         echo "<script language='javascript'>alert('Successfully Updated !');window.location = 'course1-list.php';</script>";
     }
 }
@@ -167,13 +170,6 @@ if(isset($_POST['addcourse1']))
                                     <input type="text" name="name" class="form-control" value="<?= $data1['name'];?>">
                                 </div>
                             </div>  
-<!-- 
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">metatitle</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="metatitle" class="form-control" value="<?= $data1['metatitle'];?>">
-                                </div>
-                            </div>    -->  
     
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Icon</label>
@@ -187,19 +183,25 @@ if(isset($_POST['addcourse1']))
                                 <div class="col-sm-10">
                                     <input type="file" name="p_image1" class="form-control">
                                 </div>
-                            </div>      
-                            
-<!--                            <div class="form-group"><label class="col-sm-2 control-label">Banner Description</label>
+                            </div>        
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Information</label>
                                 <div class="col-sm-10">
-                                    <textarea placeholder="banner_description" class="form-control summernote" name="banner_description"><?= $data1['banner_description'];?></textarea>
+                                    <textarea placeholder="Information" class="form-control summernote" name="information"><?= $data1['information'];?></textarea>
                                 </div>
-                            </div>  -->    
-
-                            <div class="form-group"><label class="col-sm-2 control-label">Description</label>
+                            </div>                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Current ROI and Offer</label>
                                 <div class="col-sm-10">
-                                    <textarea placeholder="description" class="form-control summernote" name="description"><?= $data1['description'];?></textarea>
+                                    <textarea placeholder="Current ROI and Offer" class="form-control summernote" name="current_roi"><?= $data1['current_roi'];?></textarea>
                                 </div>
-                            </div> 
+                            </div>                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Features and Benefits</label>
+                                <div class="col-sm-10">
+                                    <textarea placeholder="features" class="form-control summernote" name="features"><?= $data1['features'];?></textarea>
+                                </div>
+                            </div>
 
                             <div class="hr-line-dashed"></div>
      

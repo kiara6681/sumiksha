@@ -2,10 +2,9 @@
 <?php
     
     $error = false;
-    
+
     if( isset($_POST['Login']) ) { 
-        
-        
+    
         $email = trim($_POST['email']);
         $email = strip_tags($email);
         $email = htmlspecialchars($email);
@@ -75,7 +74,7 @@
                 <h3 class="text-center" style="color: #000;font-weight: 600;">Login Form</h3>
                 <br>
                 <?php
-                    if (isset($errMSG) ) 
+                    if (isset($errMSG)) 
                     {
                 ?>
                     <div class="form-group">

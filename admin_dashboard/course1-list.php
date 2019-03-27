@@ -56,8 +56,9 @@
                                 <th>Name</th>
                                 <th>Icon</th>
                                 <th>Image</th>
-                                <!--<th>Banner Description</th> -->
-                                <th>Description</th> 
+                                <th>Information</th> 
+                                <th>Current ROI and Offer</th> 
+                                <th>Features and Benefits</th> 
                                 <th>Sorting</th> 
                                 <th>Action</th>
                             </tr>
@@ -92,8 +93,9 @@
                                     </td>
                                     <td><img src="uploads/icon/<?php echo $data_cmp['icon']; ?>" style="width:70px;height:70px;background: #1ab394;"></td>
                                     <td><img src="uploads/courses/<?php echo $data_cmp['image']; ?>" style="width:100px;height:70px;"></td>
-                                    <!--<td><?php echo $data_cmp['banner_description']; ?></td>-->
-                                    <td><?php echo $data_cmp['description']; ?></td>
+                                    <td><?php echo $data_cmp['information']; ?></td>
+                                    <td><?php echo $data_cmp['current_roi']; ?></td>
+                                    <td><?php echo $data_cmp['features']; ?></td>
                                     <td><?php echo $data_cmp['sort_by']; ?></td>
                                     <td class="center">
                                         <a href="course1_edit.php?id=<?php echo $data_cmp['id']; ?>" class="btn btn-primary btn-circle">

@@ -45,6 +45,12 @@
         .modal-dialog{
             width: 300px; 
         }
+        #quote-carousel .carousel-control.right {
+            right: -20px;
+        }
+        #quote-carousel .carousel-control.left {
+            left: -20px;
+        }
     }
 
     @media (min-width: 992px) {
@@ -344,8 +350,8 @@
 <script src="<?= base_url();?>frontend_assets/js/jquery.smooth-scroll.js"></script>
 <link rel="stylesheet" type="text/css" href="<?= base_url();?>frontend_assets/css/ohover.css"/>
 <!-- <link rel="stylesheet" type="text/css" href="css/main.css"/> -->
-<section class="gredientPattern container-fluid " data-sequence='500'>
-<!-- <div class="bgtrans"></div> -->
+<section class="gredientPattern container-fluid hidden-xs" data-sequence='500'>
+
     <div class="pageSection linePattern row magic-3">
     
         <div class="container text-center">
@@ -405,6 +411,154 @@
                         </div>
                         <div class="info">
                             <h3>Credit Card</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+ 
+</section>
+<section class="gredientPattern container-fluid hidden-lg" data-sequence='500'>
+
+    <div class="pageSection linePattern row magic-3" style="padding: 0 0 0px 0;">
+        <a href="<?= base_url();?>check-civil-score">
+            <img src="<?= base_url();?>frontend_assets/images/bannernew_1.png" class="img-responsive" style="background: #fff;margin-bottom: 10px;margin-top: 2px;">
+        </a>
+        <div class="container text-center" style="width: 100%;">
+            <div class="row loanEmiForm">
+                <?php 
+                    $sql=$conn->query("select * from course1 where course_id = 4 limit 0,4");
+                    while($row=mysqli_fetch_array($sql))
+                    {
+               ?>
+
+                    <div class="col-xs-3" style="height: 100px;">
+                        <?php
+                            if($row['id']==19){
+                        ?>
+                        <a href="https://termlife.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                        <?php
+                            }
+                            elseif($row['id']==18){
+                        ?>
+                        <a href="https://health.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                        <?php
+                            }
+                            elseif($row['id']==53){
+                        ?>
+                        <a href="https://ci.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                        <?php
+                            }
+                            else{
+                        ?>
+                        <a href="<?= base_url();?>product/<?= $row['metatitle'];?>">
+                        <?php
+                            }
+                        ?>
+                            <div class="img">
+                                <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 45px;height: 45px;margin-top: 10px;">
+                                <h5 style="font-size: 10px;line-height: 15px;margin-bottom: 0px;font-style: normal;font-family: Lato,sans-serif;color: #fff;"><?= $row['name'];?></h5>
+                            </div>
+                        </a>
+                        
+                    </div>
+
+                <?php
+                    }
+                ?>                
+                <?php 
+                    $sql=$conn->query("select * from course1 where course_id = 5 AND id != 26");
+                    while($row=mysqli_fetch_array($sql))
+                    {
+               ?>
+
+                    <div class="col-xs-3" style="height: 100px;">
+                        <?php
+                            if($row['id']==19){
+                        ?>
+                        <a href="https://termlife.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                        <?php
+                            }
+                            elseif($row['id']==18){
+                        ?>
+                        <a href="https://health.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                        <?php
+                            }
+                            elseif($row['id']==53){
+                        ?>
+                        <a href="https://ci.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                        <?php
+                            }
+                            else{
+                        ?>
+                        <a href="<?= base_url();?>product/<?= $row['metatitle'];?>">
+                        <?php
+                            }
+                        ?>
+                            <div class="img">
+                                <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 45px;height: 45px;margin-top: 10px;">
+                                <h5 style="font-size: 10px;line-height: 15px;margin-bottom: 0px;font-style: normal;font-family: Lato,sans-serif;color: #fff;"><?= $row['name'];?></h5>
+                            </div>
+                        </a>
+                        
+                    </div>
+
+                <?php
+                    }
+                ?>                
+                <?php 
+                    $sql=$conn->query("select * from course1 where course_id = 9 AND id = 29");
+                    $row=mysqli_fetch_array($sql);
+                ?>
+
+                <div class="col-xs-3" style="height: 100px;">
+
+                    <a href="<?= base_url();?>product/<?= $row['metatitle'];?>">
+                        <div class="img">
+                            <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 45px;height: 45px;margin-top: 10px;">
+                            <h5 style="font-size: 10px;line-height: 15px;margin-bottom: 0px;font-style: normal;font-family: Lato,sans-serif;color: #fff;"><?= $row['name'];?></h5>
+                        </div>
+                    </a>
+                    
+                </div>                
+                <?php 
+                    $sql=$conn->query("select * from course1 where course_id = 9 AND id = 31");
+                    $row=mysqli_fetch_array($sql);
+                ?>
+
+                <div class="col-xs-3" style="height: 100px;">
+
+                    <a href="<?= base_url();?>product/<?= $row['metatitle'];?>">
+                        <div class="img">
+                            <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 45px;height: 45px;margin-top: 10px;">
+                            <h5 style="font-size: 10px;line-height: 15px;margin-bottom: 0px;font-style: normal;font-family: Lato,sans-serif;color: #fff;"><?= $row['name'];?></h5>
+                        </div>
+                    </a>
+                    
+                </div>                
+                <?php 
+                    $sql=$conn->query("select * from course1 where course_id = 9 AND id = 46");
+                    $row=mysqli_fetch_array($sql);
+                ?>
+
+                <div class="col-xs-3" style="height: 100px;">
+
+                    <a href="<?= base_url();?>product/<?= $row['metatitle'];?>">
+                        <div class="img">
+                            <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 45px;height: 45px;margin-top: 10px;">
+                            <h5 style="font-size: 10px;line-height: 15px;margin-bottom: 0px;font-style: normal;font-family: Lato,sans-serif;color: #fff;"><?= $row['name'];?></h5>
+                        </div>
+                    </a>
+                    
+                </div>
+
+                <div class="col-xs-3" style="height: 100px;">
+                    <a href="<?= base_url();?>credit_card">
+                        <div class="img">
+                            <img src="<?= base_url();?>frontend_assets/images/credit-card.png" style="width: 45px;height: 45px;margin-top: 10px;">
+                            <h5 style="font-size: 10px;line-height: 15px;margin-bottom: 0px;font-style: normal;font-family: Lato,sans-serif;color: #fff;">Credit Card</h5>
                         </div>
                     </a>
                 </div>
@@ -562,7 +716,7 @@
             while($sql1=mysqli_fetch_array($row1))
             {
         ?>
-        <div class="pageSection branchPage col-md-2 col-xs-6">
+        <div class="pageSection branchPage col-md-2 col-xs-6" style="padding: 5px;">
             <div class="compy">
                 <img src="<?= base_url();?>admin_dashboard/uploads/gallery/<?= $sql1['image'];?>">
             </div>

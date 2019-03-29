@@ -139,7 +139,7 @@
 
                 // Send Email Verification link 
                 $message="";
-                $message .="Verify Email ID link : <a href='".base_url()."verifyemail.php?email=$email&verify_token=$token'> Click Here</a>";
+                $message .="Verify Your Email ID : <a href='".base_url()."verifyemail.php?email=$email&verify_token=$token'> Click Here</a>";
                 $subject  ="Email Verification"; //like--- Resume From Website
                 $headers  ="";
                 include("PHPMailer/PHPMailerAutoload.php"); //Here magic Begen we include PHPMailer Library.

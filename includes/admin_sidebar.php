@@ -27,6 +27,10 @@
                 <a href="<?= base_url();?>includes/admin_home.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span></a>
             </li>
 
+            <li><a href="<?= base_url();?>admin_dashboard/check-civil-score-list.php"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Check Civil Score</span></a></li>
+
+            <li><a href="<?= base_url();?>admin_dashboard/refer-earn-list.php"><i class="fa fa-users"></i> <span class="nav-label">Lead Generation List</span></a></li>
+
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Request</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
@@ -60,8 +64,6 @@
             <li><a href="<?= base_url();?>admin_dashboard/notifications-list.php"><i class="fa fa-users"></i> <span class="nav-label">Notifications</span></a></li>
 
             <li><a href="<?= base_url();?>admin_dashboard/offers-list.php"><i class="fa fa-users"></i> <span class="nav-label">Offers</span></a></li>
-
-            <li><a href="<?= base_url();?>admin_dashboard/refer-earn-list.php"><i class="fa fa-users"></i> <span class="nav-label">Lead Generation List</span></a></li>
             
 			<li><a href="<?= base_url();?>admin_dashboard/contact-list.php"><i class="fa fa-users"></i> <span class="nav-label">Contact Us</span></a></li>
         </ul>

@@ -37,6 +37,16 @@ if(isset($_POST['addnews_events']))
         $("#category").change(function(){
             
             var categoryid = $("#category").val();
+            if(categoryid==4)
+            {
+                $('.req_amount').show();
+                $('.required_amount').attr('required','required');
+            }
+            else
+            {
+                $('.req_amount').hide();
+                $('.required_amount').removeAttr('required','required');   
+            }
             //alert(categoryid);
             $.ajax({
                 url : "<?= base_url();?>ajaxPages/getSubcategory.php",
@@ -114,12 +124,6 @@ if(isset($_POST['addnews_events']))
                                 </div>
                             </div>  
 
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Required Loan Amount</label>
-                                <div class="col-sm-10">
-                                    <input type="number" name="required_amount" class="form-control" required>
-                                </div>
-                            </div>  
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Product</label>
@@ -172,6 +176,12 @@ if(isset($_POST['addnews_events']))
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group req_amount" style="display: none">
+                                <label class="col-sm-2 control-label">Required Loan Amount</label>
+                                <div class="col-sm-10">
+                                    <input type="number" name="required_amount" class="form-control required_amount">
+                                </div>
+                            </div>  
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">
                                     <input type="submit" value="Save" name="addnews_events" class="btn btn-primary">
@@ -320,4 +330,4 @@ if(isset($_POST['addnews_events']))
             <strong>Copyright</strong> &copy; 2017 Designed by <a href="http://dexusmedia.com/" target="_blank">Sumiksha Services</a>
         </div>
     </div>
-<?php include('../includes/footer_scripts.php');?>
+<?php include('../includes/footer.php');?>

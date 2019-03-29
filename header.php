@@ -430,6 +430,20 @@
         float: left;
         margin-right: 10px;
     }
+    .blink_me {
+      animation: blinker 1s linear infinite;
+        font-size: 15px;
+        color: #fff;
+        background: #e46010;
+        padding: 5px;
+        border-radius: 4px;
+    }
+
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
 </style>
 <script>
     $(function(){
@@ -491,9 +505,9 @@
                         </div>
             
                     </div>
-                    <div class="col-md-2 col-xs-5 col-sm-8">
-            
-                        <div class="dropdown buttonPanel text-left"> 
+                    <div class="col-md-2 col-xs-5 col-sm-8 text-left">
+                        <a href="<?= base_url();?>check-civil-score" class="blink_me">Check Cibil Score</a>
+                        <div class="dropdown buttonPanel"> 
                             <a href="javascript:void(0)" class="dropbtn btn darkGreyBtn red-bg-btn back_color">
                                 My Account
                             </a> 
@@ -534,9 +548,9 @@
             
                     </div>
 
-                    <div class="col-md-3 col-xs-5 col-sm-8">
-            
-                        <div class="buttonPanel text-right"> 
+                    <div class="col-md-3 col-xs-5 col-sm-8 text-right">
+                        <a href="<?= base_url();?>check-civil-score" class="blink_me">Check Civil Score</a>
+                        <div class="buttonPanel"> 
             
                             <a href="<?= base_url();?>login" class="btn darkGreyBtn red-bg-btn back_color">
                                 <i class="fa fa-sign-in"></i> LOGIN

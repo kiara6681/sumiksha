@@ -98,14 +98,6 @@
                 </diV>
             </div>  
         </div>
-        <hr>
-        <div class="col-md-12">
-            
-            <p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.1052541177546!2d75.77855231504601!3d26.963565983105717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db3b47a84b429%3A0x92b38efd91251d5d!2sDexus+Media+Best+website+development+company+Jaipur!5e0!3m2!1sen!2sin!4v1542365475975" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-            </p>
-            
-        </div>
     </div>
 </section>
 <?php include('footer.php');?>

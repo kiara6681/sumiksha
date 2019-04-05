@@ -413,13 +413,37 @@
             });            
             $('.approve').on('click',function(){
                 var id = $(this).attr("id");
+                var product_id = $(this).attr("data-id");
                 $("#refer_earn_"+id+"").val(1);
-                $('.approve_tab').show();
-                $('.approve_req').attr("required", "required");
-                $('.reject_hide').hide();
+                if(product_id==5){
+                    $('.approve__insurance').show();
+                    //$('.login_req').attr("required", "required");
+                    $('.reject_hide').hide();                    
+                }                
+                else if(product_id==8 || product_id==9){
+                    //$('.approve__insurance').show();
+                    //$('.login_req').attr("required", "required");
+                    $('.reject_hide').hide(); 
+                    $('.card_app').show();                   
+                }
+                else
+                {
+                    $('.approve_tab').show();
+                    $('.approve_req').attr("required", "required");
+                    $('.reject_hide').hide();
+                }
             });
         });
     </script>
-    
+    <!-- Upload PDF file -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".upload_pdf").on('click', function(){
+                var id = $(this).attr("id");
+                $("#upload_pdf").modal('show');
+                $("#us_id").val(id);
+            });
+        });
+    </script>
 </body>
 </html>

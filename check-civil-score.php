@@ -32,7 +32,7 @@
             <div class="col-md-2 col-sm-2 col-xs-12 bmargin"></div>
             <div class="col-md-8 col-sm-8 col-xs-12 bmargin"> 
               
-                <h3 class="text-center" style="color: #000;font-weight: 600;">Check Civil Score</h3>
+                <h3 class="text-center" style="color: #000;font-weight: 600;">Check Cibil Score</h3>
                 <br>
                 <?php
                     if (isset($succMSG) ) 

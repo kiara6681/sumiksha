@@ -435,28 +435,9 @@
                ?>
 
                     <div class="col-xs-3" style="height: 100px;">
-                        <?php
-                            if($row['id']==19){
-                        ?>
-                        <a href="https://termlife.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
-                        <?php
-                            }
-                            elseif($row['id']==18){
-                        ?>
-                        <a href="https://health.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
-                        <?php
-                            }
-                            elseif($row['id']==53){
-                        ?>
-                        <a href="https://ci.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
-                        <?php
-                            }
-                            else{
-                        ?>
+
                         <a href="<?= base_url();?>product/<?= $row['metatitle'];?>">
-                        <?php
-                            }
-                        ?>
+
                             <div class="img">
                                 <img src="<?= base_url();?>admin_dashboard/uploads/icon/<?= $row['icon'];?>" style="width: 45px;height: 45px;margin-top: 10px;">
                                 <h5 style="font-size: 10px;line-height: 15px;margin-bottom: 0px;font-style: normal;font-family: Lato,sans-serif;color: #fff;"><?= $row['name'];?></h5>
@@ -476,19 +457,39 @@
 
                     <div class="col-xs-3" style="height: 100px;">
                         <?php
-                            if($row['id']==19){
+                            if($row['id']==18){
                         ?>
-                        <a href="https://termlife.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <a href="https://health.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
                         <?php
                             }
-                            elseif($row['id']==18){
+                            elseif($row['id']==19){
                         ?>
-                        <a href="https://health.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <a href="https://termlife.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                        <?php
+                            }
+                            elseif($row['id']==26){
+                        ?>
+                            <a href="https://travel.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                        <?php
+                            }
+                            elseif($row['id']==27){
+                        ?>
+                            <a href="http://sme.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                        <?php
+                            }
+                            elseif($row['id']==28){
+                        ?>
+                            <a href="http://home.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                        <?php
+                            }
+                            elseif($row['id']==51){
+                        ?>
+                            <a href="https://twowheeler.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
                         <?php
                             }
                             elseif($row['id']==53){
                         ?>
-                        <a href="https://ci.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
+                            <a href="https://ci.policybazaar.com/?utm_source=OfflineAffiliate&utm_term=ADCA10942&utm_medium=ADCA10942&utm_campaign=ADRM264">
                         <?php
                             }
                             else{

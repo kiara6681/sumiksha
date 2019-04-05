@@ -27,7 +27,7 @@
                 <a href="<?= base_url();?>includes/admin_home.php"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span></a>
             </li>
 
-            <li><a href="<?= base_url();?>admin_dashboard/check-civil-score-list.php"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Check Civil Score</span></a></li>
+            <li><a href="<?= base_url();?>admin_dashboard/check-civil-score-list.php"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Check Cibil Score</span></a></li>
 
             <li><a href="<?= base_url();?>admin_dashboard/refer-earn-list.php"><i class="fa fa-users"></i> <span class="nav-label">Lead Generation List</span></a></li>
 

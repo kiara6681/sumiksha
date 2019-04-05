@@ -132,6 +132,10 @@
                 "onlyNumberSp": {
                     "regex": /^[0-9\ ]+$/,
                     "alertText": "* Numbers only"
+                },                
+                "onlyPancard": {
+                    "regex": /^[a-zA-z]{5}\d{4}[a-zA-Z]+$/i,
+                    "alertText": "* Pancard Number only"
                 },
                 "onlyLetterSp": {
                     "regex": /^[a-zA-Z\ \']+$/,

@@ -90,6 +90,14 @@
                                     <?php
                                         }
                                     ?>
+                                    <?php
+                                        if($data_cmp['course_id']==8)
+                                        {
+                                    ?>
+                                        <a href="cards-features-list.php?id=<?php echo $data_cmp['id']; ?>" class="btn btn-success btn-sm"><i class="fa fa-eye"></i> cards features & benefits</a>
+                                    <?php
+                                        }
+                                    ?>
                                     </td>
                                     <td><img src="uploads/icon/<?php echo $data_cmp['icon']; ?>" style="width:70px;height:70px;background: #1ab394;"></td>
                                     <td><img src="uploads/courses/<?php echo $data_cmp['image']; ?>" style="width:100px;height:70px;"></td>
@@ -98,7 +106,7 @@
                                     <td><?php echo $data_cmp['features']; ?></td>
                                     <td><?php echo $data_cmp['sort_by']; ?></td>
                                     <td class="center">
-                                        <a href="course1_edit.php?id=<?php echo $data_cmp['id']; ?>" class="btn btn-primary btn-circle">
+                                        <a href="course1_edit.php?id=<?php echo $data_cmp['id']; ?>_<?= $data_cmp['course_id'];?>" class="btn btn-primary btn-circle">
                                             <i class="fa fa-pencil-square-o"></i>
                                         </a>
                                         <a href="#<?= $data_cmp['id'];?>" data-toggle="modal" class="btn btn-danger btn-circle animation_select" data-animation="shake">
@@ -129,30 +137,6 @@
 
                                     </div>
                                 </div>                              
-
-                                <div id="<?= $data_cmp['id'];?>" class="modal fade animated shake" role="dialog">
-                                    <div class="modal-dialog">
-
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title"><i class="glyphicon glyphicon-trash"></i> Delete Category</h4>
-                                          </div>
-                                          <div class="modal-body">
-                                            <p>Are you sure you want to Delete ?</p>
-                                            <input type="hidden" id="delt" value="<?= $data_cmp['id'];?>"> 
-                                          </div>
-                                          <div class="modal-footer">
-                                            <form method="post">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button class="btn btn-danger" type="submit" name="delete" value="<?php echo $data_cmp['id']; ?>">Delete</button>
-                                            </form>
-                                          </div>
-                                        </div>
-
-                                    </div>
-                                </div>
                             <?php $count++; }?>
                             </tbody>
                        </table>

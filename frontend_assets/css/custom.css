@@ -915,7 +915,7 @@ body {padding-top: 104px;}
         float:none;
     }
     .navbar-fixed-top {
-        top: 58px!important;
+        top: 0px!important;
         background: #000!important
     }
     .buttonPanel .btn{margin-bottom: 0px!important;}
@@ -946,12 +946,19 @@ body {padding-top: 104px;}
         padding: 0px 0!important;
     }
     .gredientPattern{
-        padding-top: 194px!important;
+        padding-top: 45px!important;
     }
     .mobile-box-branch{ display:block;}
     .map{ display:none;}
     .AlwasysBottom marquee{
         padding-top: 10px!important;
+        color: #fff!important;
+        float: left!important;
+        font-size: 15px!important;
+    }
+    .AlwasysBottom{
+        width: 80%!important;
+        float: left;
     }
     
  .header-image {

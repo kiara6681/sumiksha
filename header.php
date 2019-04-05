@@ -60,13 +60,35 @@
 <script>
     $(document).ready(function(){
         // binds form submission and fields to the validation engine
+        $("#qdform").validationEngine();
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        // binds form submission and fields to the validation engine
         $("#formID").validationEngine();
+        $('#formID').validate({
+            rules: {
+                myField: { 
+                    required: true,
+                    onlyPancard: true,
+                }
+            }
+        });
     });
 </script>
 <script>
     $(document).ready(function(){
         // binds form submission and fields to the validation engine
         $("#Register_form").validationEngine();
+        $('#Register_form').validate({
+            rules: {
+                myField: { 
+                    required: true,
+                    onlyPancard: true,
+                }
+            }
+        });
     });
 </script>
 <script>
@@ -83,6 +105,14 @@
             {
                 //alert(data);
                 //$("#subcategory").html(data);
+            }
+        });
+        $('#Job_form').validate({
+            rules: {
+                myField: { 
+                    required: true,
+                    onlyPancard: true,
+                }
             }
         });
     });
@@ -444,6 +474,9 @@
         opacity: 0;
       }
     }
+    .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
+        max-height: 400px;
+    }
 </style>
 <script>
     $(function(){
@@ -463,7 +496,7 @@
 </head>
  
 <body onLoad="showModal();">
-    <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav hidden-xs">
         <a href="https://www.facebook.com/" target="_blank" id="facebook"><i class="fa fa-facebook"></i> <span class="hidden-xs">Facebook</span></a>
         <a href="https://twitter.com/" target="_blank" id="twitter"><i class="fa fa-twitter"></i> <span class="hidden-xs">Twitter</span></a>
         <a href="https://plus.google.com/" target="_blank" id="google"><i class="fa fa-google-plus"></i> <span class="hidden-xs">Google Plus</span></a>
@@ -549,7 +582,7 @@
                     </div>
 
                     <div class="col-md-3 col-xs-5 col-sm-8 text-right">
-                        <a href="<?= base_url();?>check-civil-score" class="blink_me">Check Civil Score</a>
+                        <a href="<?= base_url();?>check-civil-score" class="blink_me">Check Cibil Score</a>
                         <div class="buttonPanel"> 
             
                             <a href="<?= base_url();?>login" class="btn darkGreyBtn red-bg-btn back_color">
@@ -576,7 +609,7 @@
                     $res=$conn->query("SELECT * FROM login WHERE id=".$_SESSION['user']);
                     $userRow=mysqli_fetch_array($res);
                 ?>
-                    <div class="col-md-8 col-xs-12 col-sm-4 text-center"> 
+                    <div class="col-md-8 col-xs-12 col-sm-4 text-center hidden-xs"> 
             
                         <div class="AlwasysBottom">
                            <marquee onload="this.start();" onmouseover="this.stop();" onmouseout="this.start();" truespeed="truespeed" scrollamount="1" class="ticker_txt1" scrolldelay="20" direction="left" loop="repeat">Economically Broken!! Financially Tensed?? Come to us...</marquee>
@@ -589,7 +622,7 @@
                         {
                     ?>
 
-                    <div class="col-md-7 col-xs-12 col-sm-4 text-center"> 
+                    <div class="col-md-7 col-xs-12 col-sm-4 text-center hidden-xs"> 
             
                         <div class="AlwasysBottom">
                             <marquee onload="this.start();" onmouseover="this.stop();" onmouseout="this.start();" truespeed="truespeed" scrollamount="1" class="ticker_txt1" scrolldelay="20" direction="left" loop="repeat">Economically Broken!! Financially Tensed?? Come to us...</marquee>
@@ -599,7 +632,7 @@
                 <?php
                     }
                 ?>  
-                <div class="col-md-2 col-xs-6 col-sm-4"> 
+                <div class="col-md-2 col-xs-6 col-sm-4 hidden-xs"> 
         
                     <a class="Logo" href="<?= base_url();?>">
                         <img alt="logo" src="<?= base_url();?>frontend_assets/images/logo.png">
@@ -622,7 +655,7 @@
                     $res=$conn->query("SELECT * FROM login WHERE id=".$_SESSION['user']);
                     $userRow=mysqli_fetch_array($res);
                 ?>
-                <div class="dropdown buttonPanel text-left  hidden-lg" style="margin-top: 0px!important;float: left;"> 
+                <div class="dropdown buttonPanel text-left hidden-xs hidden-lg" style="margin-top: 0px!important;float: left;"> 
                     <a href="javascript:void(0)" class="dropbtn btn darkGreyBtn red-bg-btn back_color">
                         My Account
                     </a> 
@@ -650,23 +683,10 @@
                 </div>
                 <?php
                     }
-                    else
-                    {
                 ?>
-                <div class="buttonPanel text-left  hidden-lg" style="margin-top: 0px!important;float: left;"> 
-    
-                    <a href="<?= base_url();?>login" class="btn darkGreyBtn red-bg-btn back_color">
-                        <i class="fa fa-sign-in"></i> LOGIN
-                    </a> 
-             
-                    <a href="<?= base_url();?>register" class="btn darkGreyBtn red-bg-btn back_color">
-                        <i class="fa fa-user"></i> REGISTER
-                    </a>
-    
+                <div class="AlwasysBottom hidden-lg">
+                   <marquee onload="this.start();" onmouseover="this.stop();" onmouseout="this.start();" truespeed="truespeed" scrollamount="1" class="ticker_txt1" scrolldelay="20" direction="left" loop="repeat">Economically Broken!! Financially Tensed?? Come to us...</marquee>
                 </div>
-                <?php
-                    }
-                ?>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
                     <span class="sr-only">Toggle navigation</span> 
                     <span class="icon-bar"></span> 
@@ -805,6 +825,10 @@
                     <li><a href="<?= base_url();?>aboutus">About Us</a></li>
 
                     <li><a href="<?= base_url();?>contactus">Contact Us</a></li>
+
+                    <li class="hidden-lg"><a href="<?= base_url();?>login">Login</a></li>
+
+                    <li class="hidden-lg"><a href="<?= base_url();?>register">Register</a></li>
                 </ul>
            </div>
      

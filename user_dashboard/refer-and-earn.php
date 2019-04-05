@@ -203,6 +203,9 @@ if(isset($_POST['addnews_events']))
                                 <th>Approved loan Amount</th>
                                 <th>Login Bank</th>
                                 <th>Login Date</th>
+                                <th>Net Premium</th>
+                                <th>TP</th>
+                                <th>Download PDF File</th>
                                 <th>Created Date</th>
                                 <th>Approval</th>
                                 <th>Status</th>
@@ -225,6 +228,26 @@ if(isset($_POST['addnews_events']))
                                     <td style="color: green"><?php echo $data_cmp['approve_loan']; ?></td>
                                     <td style="color: green"><?php echo $data_cmp['login_bank']; ?></td>
                                     <td style="color: green"><?php echo $data_cmp['login_date']; ?></td>
+                                    <td style="color: green"><?php echo $data_cmp['net_premium']; ?></td>
+                                    <td style="color: green"><?php echo $data_cmp['tp']; ?></td>
+                                    <td>
+                                        <?php
+                                            if($data_cmp['product_id']==5):
+                                                if($data_cmp['tp']!='' || $data_cmp['net_premium']!=''):
+                                        ?>
+                                            <?php
+                                                if(!empty($data_cmp['upload_file'])):
+                                            ?>
+                                            <a href="<?= base_url();?>admin_dashboard/uploads/PDF/<?= $data_cmp['upload_file'];?>" class="btn btn-success btn-xs upload_pdf" target="_blank">Download PDF file</a>
+                                            <a href="javascript:;" style="text-decoration: underline;">Send PDF Mail</a>
+                                            <?php
+                                                endif;
+                                            ?>
+                                        <?php
+                                                endif;
+                                            endif;
+                                        ?>
+                                    </td>
                                     <td><?php echo $data_cmp['created_at']; ?></td>
                                     <td>
                                         <?php

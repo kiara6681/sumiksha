@@ -92,8 +92,7 @@ if(isset($_POST['addfilmlocation1']))
 }
 
 ?>
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script language="javascript"> 
     //pop up script
     $(document).ready(function(e){
@@ -129,6 +128,20 @@ if(isset($_POST['addfilmlocation1']))
                     $("#subattribute").html(data);
                 }
             });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#course_id').change(function(){
+            var course_id = $(this).val();
+            if(course_id!=8){
+                $('.credit_card').show();
+            }
+            else{
+                $('.credit_card').hide();
+            }
         });
     });
 </script>
@@ -172,7 +185,7 @@ if(isset($_POST['addfilmlocation1']))
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Category Name</label>
                                 <div class="col-sm-10">
-                                    <select name="course_id" class="form-control" required>
+                                    <select name="course_id" id="course_id" class="form-control" required>
                                         <option value="">Select Category</option>
                                     <?php 
                                         $sql_cmp = $conn->query("SELECT * from courses order by id asc");
@@ -210,13 +223,13 @@ if(isset($_POST['addfilmlocation1']))
                                     <textarea placeholder="Information" class="form-control summernote" name="information"></textarea>
                                 </div>
                             </div>                            
-                            <div class="form-group">
+                            <div class="form-group credit_card">
                                 <label class="col-sm-2 control-label">Current ROI and Offer</label>
                                 <div class="col-sm-10">
                                     <textarea placeholder="Current ROI and Offer" class="form-control summernote" name="current_roi"></textarea>
                                 </div>
                             </div>                            
-                            <div class="form-group">
+                            <div class="form-group credit_card">
                                 <label class="col-sm-2 control-label">Features and Benefits</label>
                                 <div class="col-sm-10">
                                     <textarea placeholder="features" class="form-control summernote" name="features"></textarea>

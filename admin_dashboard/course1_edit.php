@@ -1,7 +1,11 @@
 <?php include('../includes/header.php');?>
 <?php 
 error_reporting(0);
-$id=$_REQUEST['id'];
+$course_id=$_REQUEST['id'];
+$idd = explode("_",$course_id);
+$id = $idd[0];
+$id_1 = $idd[1];
+
 $sql1=$conn->query("select course1.*, courses.name as course_name from course1 left join courses on courses.id = course1.course_id where course1.id=$id");
 $data1=mysqli_fetch_array($sql1);
 
@@ -104,9 +108,21 @@ if(isset($_POST['addcourse1']))
 }
 
 ?>
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.credit_card').hide();
+        $('#course_id').change(function(){
+            var course_id = $(this).val();
+            if(course_id!=8){
+                $('.credit_card').show();
+            }
+            else{
+                $('.credit_card').hide();
+            }
+        });
+    });
+</script>
 <style>
 .form-group .control-label:after {
     content: "*";
@@ -149,7 +165,7 @@ if(isset($_POST['addcourse1']))
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Product Name</label>
                                 <div class="col-sm-10">
-                                    <select name="course_id" class="form-control" required>
+                                    <select name="course_id" id="course_id" class="form-control" required>
                                         <option value="<?= $data1['course_id'];?>"><?= $data1['course_name'];?></option>
                                     <?php 
                                         $sql_cmp = $conn->query("SELECT * from courses order by id asc");
@@ -190,13 +206,13 @@ if(isset($_POST['addcourse1']))
                                     <textarea placeholder="Information" class="form-control summernote" name="information"><?= $data1['information'];?></textarea>
                                 </div>
                             </div>                            
-                            <div class="form-group">
+                            <div class="form-group credit_card">
                                 <label class="col-sm-2 control-label">Current ROI and Offer</label>
                                 <div class="col-sm-10">
                                     <textarea placeholder="Current ROI and Offer" class="form-control summernote" name="current_roi"><?= $data1['current_roi'];?></textarea>
                                 </div>
                             </div>                            
-                            <div class="form-group">
+                            <div class="form-group credit_card">
                                 <label class="col-sm-2 control-label">Features and Benefits</label>
                                 <div class="col-sm-10">
                                     <textarea placeholder="features" class="form-control summernote" name="features"><?= $data1['features'];?></textarea>

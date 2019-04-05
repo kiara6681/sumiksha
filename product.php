@@ -447,11 +447,34 @@
         $bank_name=$_REQUEST['bank_name'];
         $apply_for_bank=$_REQUEST['apply_for_bank'];
         
+        $middle_name=$_REQUEST['middle_name'];
+        $last_name=$_REQUEST['last_name'];
+        $dob=$_REQUEST['dob'];
+        $father_name=$_REQUEST['father_name'];
+        $mother_name=$_REQUEST['mother_name'];
+        $qualification=$_REQUEST['qualification'];
+        $propriter=$_REQUEST['propriter'];
+        $office_phone=$_REQUEST['office_phone'];
+        $landmark=$_REQUEST['landmark'];
+        $alternate_card_no=$_REQUEST['alternate_card_no'];
+        $designation=$_REQUEST['designation'];
+        $current_employment=$_REQUEST['current_employment'];
+        $work_experience=$_REQUEST['work_experience'];
+        $mailing_address=$_REQUEST['mailing_address'];
+        $qb_format=$_REQUEST['qb_format'];
+        if(empty($qb_format))
+        {
+            if($qb_format==null)
+            {
+                $qb_format="Null";
+            }
+        }
+
         $date=date("Y-m-d H:i:s");
     
-       if(mysqli_query($conn, "INSERT INTO `business_enquiry` (`user_id`,`product_id`,`sub_product_id`,`full_name`,`email_id`,`mobile_no`,`whatsapp_no`,`maritial_status`,`occupation`,`salary_type`,`company_name`,`salary_account`,`latest_itr`,`income_per_month`,`gross_salary`,`net_salary`,`business_name`,`business_year`,`business_vintage`,`current_account`,`type_land`,`size_land`,`registered_authority`,`loan_type`,`property_purchase_cost`,`property_address`,`loan_amount`,`house_status`,`residence_address`,`office_address`,`city`,`pincode`,`pan_card_no`,`aadhar_card_no`,`pan_card_img`,`aadhar_card_img`,`bank_statement_img`,`property_site_map_img`,`salary_slip_img`,`travel_check`,`self_age`,`travel_check1`,`spouse_age`,`travel_check2`,`son_age`,`travel_check3`,`daughter_age`,`select_income`,`medical`,`self_asthma`,`spouse_asthma`,`self_diabetes`,`spouse_diabetes`,`self_heart`,`spouse_heart`,`self_hyper`,`spouse_hyper`,`self_thyroid`,`spouse_thyroid`,`term_dob`,`smoker`,`annual_income`,`terms_occupation`,`going_with`,`travelling`,`corporate_company_name`,`insurance_policy`,`home_property_type`,`value_building`,`value_content`,`age_property`,`ownership`,`vechile`,`policy_type`,`vechile_details`,`rto_no`,`rc_upload_img`,`current_policy_img`,`card_number`,`credit_limit`,`available_credit_limit`,`max_card_limit`,`bank_name`,`apply_for_bank`,`latest_card_statement_img`,`created_at`) 
+       if(mysqli_query($conn, "INSERT INTO `business_enquiry` (`user_id`,`product_id`,`sub_product_id`,`full_name`,`email_id`,`mobile_no`,`whatsapp_no`,`maritial_status`,`occupation`,`salary_type`,`company_name`,`salary_account`,`latest_itr`,`income_per_month`,`gross_salary`,`net_salary`,`business_name`,`business_year`,`business_vintage`,`current_account`,`type_land`,`size_land`,`registered_authority`,`loan_type`,`property_purchase_cost`,`property_address`,`loan_amount`,`house_status`,`residence_address`,`office_address`,`city`,`pincode`,`pan_card_no`,`aadhar_card_no`,`pan_card_img`,`aadhar_card_img`,`bank_statement_img`,`property_site_map_img`,`salary_slip_img`,`travel_check`,`self_age`,`travel_check1`,`spouse_age`,`travel_check2`,`son_age`,`travel_check3`,`daughter_age`,`select_income`,`medical`,`self_asthma`,`spouse_asthma`,`self_diabetes`,`spouse_diabetes`,`self_heart`,`spouse_heart`,`self_hyper`,`spouse_hyper`,`self_thyroid`,`spouse_thyroid`,`term_dob`,`smoker`,`annual_income`,`terms_occupation`,`going_with`,`travelling`,`corporate_company_name`,`insurance_policy`,`home_property_type`,`value_building`,`value_content`,`age_property`,`ownership`,`vechile`,`policy_type`,`vechile_details`,`rto_no`,`rc_upload_img`,`current_policy_img`,`card_number`,`credit_limit`,`available_credit_limit`,`max_card_limit`,`bank_name`,`apply_for_bank`,`latest_card_statement_img`,`middle_name`,`last_name`,`dob`,`father_name`,`mother_name`,`qualification`,`propriter`,`office_phone`,`landmark`,`alternate_card_no`,`designation`,`current_employment`,`work_experience`,`mailing_address`,`qb_format`,`created_at`) 
 
-            VALUES ('$user_id','$product_id','$sub_product_id','$full_name','$email_id','$mobile_no','$whatsapp_no','$maritial_status','$occupation','$salary_type','$company_name','$salary_account','$latest_itr','$income_per_month','$gross_salary','$net_salary','$business_name','$business_year','$business_vintage','$current_account','$type_land','$size_land','$registered_authority','$loan_type','$property_purchase_cost','$property_address','$loan_amount','$house_status','$residence_address','$office_address','$city','$pincode','$pan_card_no','$aadhar_card_no','$pan_card_img','$aadhar_card_img','$bank_statement_img','$property_site_map_img','$salary_slip_img','$travel_check','$self_age','$travel_check1','$spouse_age','$travel_check2','$son_age','$travel_check3','$daughter_age','$select_income','$medical','$self_asthma','$spouse_asthma','$self_diabetes','$spouse_diabetes','$self_heart','$spouse_heart','$self_hyper','$spouse_hyper','$self_thyroid','$spouse_thyroid','$term_dob','$smoker','$annual_income','$terms_occupation','$going_with','$travelling','$corporate_company_name','$insurance_policy','$home_property_type','$value_building','$value_content','$age_property','$ownership','$vechile','$policy_type','$vechile_details','$rto_no','$rc_upload_img','$current_policy_img','$card_number','$credit_limit','$available_credit_limit','$max_card_limit','$bank_name','$apply_for_bank','$latest_card_statement_img','$date')"))
+            VALUES ('$user_id','$product_id','$sub_product_id','$full_name','$email_id','$mobile_no','$whatsapp_no','$maritial_status','$occupation','$salary_type','$company_name','$salary_account','$latest_itr','$income_per_month','$gross_salary','$net_salary','$business_name','$business_year','$business_vintage','$current_account','$type_land','$size_land','$registered_authority','$loan_type','$property_purchase_cost','$property_address','$loan_amount','$house_status','$residence_address','$office_address','$city','$pincode','$pan_card_no','$aadhar_card_no','$pan_card_img','$aadhar_card_img','$bank_statement_img','$property_site_map_img','$salary_slip_img','$travel_check','$self_age','$travel_check1','$spouse_age','$travel_check2','$son_age','$travel_check3','$daughter_age','$select_income','$medical','$self_asthma','$spouse_asthma','$self_diabetes','$spouse_diabetes','$self_heart','$spouse_heart','$self_hyper','$spouse_hyper','$self_thyroid','$spouse_thyroid','$term_dob','$smoker','$annual_income','$terms_occupation','$going_with','$travelling','$corporate_company_name','$insurance_policy','$home_property_type','$value_building','$value_content','$age_property','$ownership','$vechile','$policy_type','$vechile_details','$rto_no','$rc_upload_img','$current_policy_img','$card_number','$credit_limit','$available_credit_limit','$max_card_limit','$bank_name','$apply_for_bank','$latest_card_statement_img','$middle_name','$last_name','$dob','$father_name','$mother_name','$qualification','$propriter','$office_phone','$landmark','$alternate_card_no','$designation','$current_employment','$work_experience','$mailing_address','$qb_format','$date')"))
         {
 
             $succMSG = "Successfully Submitted";      
@@ -495,6 +518,14 @@
     .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
         background: #2196f3;
         color: #fff;
+    }    
+    .qdform>li.active>a, .qdform>li.active>a:focus, .qdform>li.active>a:hover{
+        background: #000;
+        color: #fff;
+        border: 1px solid #000;
+    }
+    .qdform>li>a{
+        color: #fff;
     }
     .amit label, span
     {
@@ -505,6 +536,35 @@
     {
         color: #000;
     }
+    form span{
+        color: #fff!important;
+    }
+    .card-image>li{
+        text-align:center!important;
+        margin-left: 10px;
+    }
+    .card-image>li.active>a{
+        background-color: #f47323!important;
+        border-radius: 50%;
+        border: none;
+        padding-top: 15px;
+        width: 50px;
+        height: 50px;
+    }   
+    .card-image>li.active>span{
+        color: #f47323!important;
+    } 
+    .card-image>li>a{
+        background-color: #fff!important;
+        border-radius: 50%;
+        border: 1px solid #000;
+        padding-top: 15px;
+        width: 50px;
+        height: 50px;
+    }
+    .card-image>li>span{
+        color: #000!important;
+    } 
 </style>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -690,11 +750,294 @@
                 <h3 class="text-center" style="color: #fff;font-weight: 600;">
                     <?= $sql1['name'];?>
                 </h3> 
+                <?php
+                    if($course_id==35 || $course_id==55):
+                ?>
+                <ul class="nav nav-tabs qdform" style="margin-bottom: 20px;">
+                    <?php
+                        if($course_id==35 || $course_id==55):
+                    ?>
+                    <li class="active"><a data-toggle="tab" href="#qdform">QD Format Form</a></li>
+                    <?php
+                        else:
+                    ?>
+                    <li class="active"><a data-toggle="tab" href="#formID">Apply Form</a></li>
+                    <?php
+                        endif;
+                    ?>
+                </ul>
+                <?php
+                    else:
+                ?>
                 <hr>
+                <?php
+                    endif;
+                ?>
+                <div class="tab-content">
+                    <?php
+                        if($course_id==35 || $course_id==55):
+                    ?>
+                    <!--*********************** QD Format Form *********************** -->
+                    <form id="qdform" class="job-form tab-pane fade in active" action="" method="post" enctype="multipart/form-data">
+                        <input name="user_id" value="<?= $users['id'];?>" type="hidden">
+                        <input name="product_id" value="<?= $pd_id;?>" type="hidden">
+                        <input name="sub_product_id" value="<?= $course_id;?>" type="hidden">
+                        <input name="qb_format" value="1" type="hidden">
+                        <div class="row">
 
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <?php
+                                        if($course_id==35):
+                                    ?>
+                                    <label>Full Name <span style="color: red">*</span></label>
+                                    <?php
+                                        else:
+                                    ?>
+                                    <label>First Name <span style="color: red">*</span></label>
+                                    <?php
+                                        endif;
+                                    ?>
+                                    <input name="full_name" type="text" class="validate[required] form-control">
+                                </div>
+                            </div>
+                            <?php
+                                if($course_id==55):
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Middle Name <span style="color: red">*</span></label>
+                                    <input name="middle_name" type="text" class="validate[required] form-control">
+                                </div>
+                            </div>
 
-                    <form id="formID" class="job-form" action="" method="post" enctype="multipart/form-data">
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Last Name <span style="color: red">*</span></label>
+                                    <input name="last_name" type="text" class="validate[required] form-control">
+                                </div>
+                            </div>
+                            <?php
+                                endif;
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Date of Birth <span style="color: red">*</span></label>
+                                    <input name="dob" type="date" class="validate[required] form-control">
+                                </div>
+                            </div>   
+                            <?php
+                                if($course_id==35):
+                            ?>                         
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>City <span style="color: red">*</span></label>
+                                    <input name="city" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
+                            <?php
+                                endif;
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Mobile No. <span style="color: red">*</span></label>
+                                    <input name="mobile_no" type="tel" class="validate[required,custom[phone],maxSize[12],minSize[10]] form-control">
+                                </div>
+                            </div>      
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Email Id <span style="color: red">*</span></label>
+                                    <input name="email_id" type="email" class="validate[required,custom[email]] form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Pan Card No. <span style="color: red">*</span></label>
+                                    <input name="pan_card_no" type="text" class="validate[required,custom[onlyPancard],maxSize[10],minSize[10] form-control" style="text-transform:uppercase">
+                                </div>
+                            </div>
+                            <?php
+                                if($course_id==55):
+                            ?>                            
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Aadhar Card No. <span style="color: red">*</span></label>
+                                    <input name="aadhar_card_no" type="text" class="form-control validate[required,maxSize[12],minSize[12]">
+                                </div>
+                            </div>   
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Company Name <span style="color: red">*</span></label>
+                                    <input name="company_name" type="text" class="form-control validate[required]">
+                                </div>
+                            </div> 
+                            <?php
+                                endif;
+                            ?>                          
+
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Father's Name <span style="color: red">*</span></label>
+                                    <input name="father_name" type="text" class="validate[required] form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Mother's Name <span style="color: red">*</span></label>
+                                    <input name="mother_name" type="text" class="validate[required] form-control">
+                                </div>
+                            </div>
+                            <?php
+                                if($course_id==35):
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Marital Status <span style="color: red">*</span></label>
+                                    <input name="maritial_status" value="Married" type="radio" class="validate[required]"> <span>Married</span> 
+                                    <input name="maritial_status" value="Single" type="radio" class="validate[required]" > <span>Single</span> 
+                                    <input name="maritial_status" value="Divorced" type="radio" class="validate[required]"> <span>Divorced</span> 
+                                </div>
+                            </div> 
+
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Qualification <span style="color: red">*</span></label>
+                                    <input name="qualification" value="Under Graduate" type="radio" class="validate[required]"> <span>Under Graduate</span> 
+                                    <input name="qualification" value="Graduate" type="radio" class="validate[required]" > <span>Graduate</span> 
+                                    <input name="qualification" value="Post Graduate" type="radio" class="validate[required]"> <span>Post Graduate</span> 
+                                </div>
+                            </div> 
+
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Residence <span style="color: red">*</span></label>
+                                    <input name="house_status" value="Owned" class="validate[required]" type="radio"> <span>Owned</span>
+                                    <input name="house_status" value="Rented" class="validate[required]" type="radio"><span>Rented</span>
+                                    <input name="house_status" value="Company" class="validate[required]" type="radio"> 
+                                    <span>Company Provided</span>
+                                </div>
+                            </div>  
+                            <?php
+                                endif;
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <?php
+                                        if($course_id==55):
+                                    ?>
+                                    <label>Residence Address <span style="color: red">*</span></label>
+                                    <?php
+                                        else:
+                                    ?>
+                                    <label>Address & Period At Current Address <span style="color: red">*</span></label>
+                                    <?php
+                                        endif;
+                                    ?>
+                                    <input name="residence_address" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
+                            <?php
+                                if($course_id==55):
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Pincode <span style="color: red">*</span></label>
+                                    <input name="pincode" type="number" class="validate[required,,custom[onlyNumberSp],maxSize[6],minSize[6] form-control">
+                                </div>
+                            </div>
+                            <?php
+                                endif;
+                            ?>
+                            <?php
+                                if($course_id==35):
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Salaried/Propriter Name <span style="color: red">*</span></label>
+                                    <input name="propriter" type="text" class="validate[required] form-control">
+                                </div>
+                            </div> 
+                            <?php
+                                endif;
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Office Address <span style="color: red">*</span></label>
+                                    <input name="office_address" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
+                            <?php
+                                if($course_id==55):
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Office Phone no. <span style="color: red">*</span></label>
+                                    <input name="office_phone" type="tel" class="form-control validate[required,custom[phone],maxSize[12],minSize[10]]">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Landmark <span style="color: red">*</span></label>
+                                    <input name="landmark" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Alternate Card No. <span style="color: red">*</span></label>
+                                    <input name="alternate_card_no" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
+                            <?php
+                                endif;
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Designation <span style="color: red">*</span></label>
+                                    <input name="designation" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
+                            <?php
+                                if($course_id==35):
+                            ?>
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Period At Current Employment <span style="color: red">*</span></label>
+                                    <input name="current_employment" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Total Work Experience <span style="color: red">*</span></label>
+                                    <input name="work_experience" type="text" class="form-control validate[required]">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-cont">
+                                    <label>Mailing Address <span style="color: red">*</span></label>
+                                    <input name="mailing_address" value="Office" class="validate[required]" type="radio"> <span>Office</span>
+                                    <input name="mailing_address" value="Residence" class="validate[required]" type="radio"><span>Residence</span>
+                                </div>
+                            </div>                         
+                            <?php
+                                endif;
+                            ?>
+                        </div> 
+                        <div class="clearfix"></div>
+                        <div class="row text-center">
+                            <input type="submit" name="business_register" value="SUBMIT" class="btn btn-primary sender_submit">
+
+                        </div>
+                    </form>
+                    <?php
+                        else:
+                    ?>
+                    <!--*********************** Regular Form *********************** -->
+                    <form id="formID" class="job-form tab-pane fade in active" action="" method="post" enctype="multipart/form-data">
                      
                         <input name="user_id" value="<?= $users['id'];?>" type="hidden">
                         <input name="product_id" value="<?= $pd_id;?>" type="hidden">
@@ -993,7 +1336,7 @@
                             <div class="col-md-4">
                                 <div class="form-cont">
                                     <label>Pan Card No. <span style="color: red">*</span></label>
-                                    <input name="pan_card_no" type="text" class="validate[required,maxSize[10],minSize[10] form-control" style="text-transform:uppercase">
+                                    <input name="pan_card_no" type="text" class="validate[required,custom[onlyPancard],maxSize[10],minSize[10] form-control" style="text-transform:uppercase">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -1454,11 +1797,14 @@
                             ?>
                         </div>
                     </form>
-                    <!-- <a href="#myModal4" data-toggle="modal" class="btn darkGreyBtn red-bg-btn back_color" style="color: #fff;">Apply Now</a>  -->
+                    <?php
+                        endif;
+                    ?>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 <br>
  
 <section class="section-side-image clearfix amit">
@@ -1593,15 +1939,363 @@
                 ?>
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#Information">Information</a></li>
+                    <?php
+                        if($pd_id==8):
+                    ?>
+                    <li><a data-toggle="tab" href="#features">Cards Features and Benefits</a></li>
+                    <?php
+                        else:
+                    ?>
                     <li><a data-toggle="tab" href="#current">Current ROI and Offer</a></li>
                     <li><a data-toggle="tab" href="#features">Features and Benefits</a></li>
+                    <?php
+                        endif;
+                    ?>
                 </ul>
+                <style type="text/css">
+                    .gr-cards-tabs ul {
+                        margin: 20px 0;
+                    }
+                    .gr-cards-tabs ul li {
+                        display: inline-block;
+                        -webkit-box-orient: vertical;
+                        display: -webkit-inline-box;
+                        list-style-type: none;
+                        text-align: center;
+                        -webkit-flex-basis: 14.28%;
+                        -moz-flex-basis: 14.28%;
+                        -ms-flex-basis: 14.28%;
+                        flex-basis: 14.28%;
+                        margin-right: 45px;
+                    }
+                    .gr-cards-tabs ul li a:hover .card-image, .gr-cards-tabs ul li a.active .card-image {
+                        background-color: #f47323;
+                        border: solid thin #f47323;
+                    }
+                    .gr-cards-tabs ul li a span.card-image {
+                        width: 36px;
+                        height: 36px;
+                        display: block;
+                        margin: auto;
+                        border-radius: 50%;
+                        border: solid thin #1e1a1e;
+                        position: relative;
+                    }
+                    .gr-cards-tabs ul li a span.card-image:before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        left: 0;
+                        bottom: 0;
+                        margin: auto;
+                        width: 20px;
+                        height: 20px;
+                        background-size: contain;
+                    }
+                    a:hover .credit-card-bw:before, a.active .credit-card-bw:before {
+                        background: url('https://www.goodreturns.in/common_dynamic/images/web/credit_card_w.svg') center no-repeat;
+                        display: block;
+                    }
+                    .credit-card-bw:before {
+                        background: url('https://www.goodreturns.in/common_dynamic/images/web/credit_card.svg') center no-repeat;
+                        display: block;
+                    }
+                    .gr-cards-tabs ul li a:hover .card-text, .gr-cards-tabs ul li a.active .card-text {
+                        color: #f47323;
+                    }
+                    .gr-cards-tabs ul li a span.card-text {
+                        padding: 5px 0;
+                        width: 85px;
+                        margin: auto;
+                    }
+                    a:hover .travel-bw:before, a.active .travel-bw:before {
+                        background: url('https://www.goodreturns.in/common_dynamic/images/web/cc_category_w_1.svg') center no-repeat;
+                        display: block;
+                    }
+                    .travel-bw:before {
+                        background: url('https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_1.svg') center no-repeat;
+                        display: block;
+                    }
+                    a:hover .fuel-bw:before, a.active .fuel-bw:before {
+                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_w_2.svg) center no-repeat;
+                        display: block;
+                    }
+                    .fuel-bw:before {
+                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_2.svg) center no-repeat;
+                        display: block;
+                    }
+                    a:hover .premium-bw:before, a.active .premium-bw:before {
+                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_w_3.svg) center no-repeat;
+                        display: block;
+                    }
+                    .premium-bw:before {
+                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_3.svg) center no-repeat;
+                        display: block;
+                    }
+                    a:hover .rewards-bw:before, a.active .rewards-bw:before {
+                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_w_4.svg) center no-repeat;
+                        display: block;
+                    }
+                    .rewards-bw:before {
+                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_4.svg) center no-repeat;
+                        display: block;
+                    }
+                    a:hover .shopping-cashback-bw:before, a.active .shopping-cashback-bw:before {
+                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_w_5.svg) center no-repeat;
+                        display: block;
+                    }
+                    .shopping-cashback-bw:before {
+                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_5.svg) center no-repeat;
+                        display: block;
+                    }
+                    .lifestyle-bw:before {
+                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_6.svg) center no-repeat;
+                        display: block;
+                    }
+                    .lifestyle-bw:before {
+                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_6.svg) center no-repeat;
+                        display: block;
+                    }
+                    .clearfix:after {
+                        clear: both;
+                        content: ' ';
+                        display: block;
+                        font-size: 0;
+                        line-height: 0;
+                        visibility: hidden;
+                        width: 0;
+                        height: 0;
+                    }
+                </style>
                 <div class="tab-content">
+                    <?php
+                        if($pd_id==8):
+                    ?>
+                        <div id="Information" class="tab-pane fade in active">
+                            <div style="padding-top: 20px;color: #000;">
+                                <?= $sql1['information'];?>
+                            </div>
+                        </div>
+                        <div id="features" class="tab-pane fade gr-cards-tabs">
+                            <ul>
+                                <li>
+                                    <a href="javascript:void(0)" class="active" id="all">
+                                        <span class="card-image credit-card-bw">
+                                        </span>
+                                        <span class="card-text">
+                                            All
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a href="javascript:void(0)" id="cd_1" class="">
+                                        <span class="card-image travel-bw">
+                                            
+                                        </span>
+                                        <span class="card-text">
+                                            Travel
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" id="cd_2" class="">
+                                        <span class="card-image fuel-bw">
+                                            
+                                        </span>
+                                        <span class="card-text">
+                                            Fuel
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" id="cd_3" class="">
+                                        <span class="card-image premium-bw">
+                                            
+                                        </span>
+                                        <span class="card-text">
+                                            Premium
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" id="cd_4" class="">
+                                        <span class="card-image rewards-bw">
+                                            
+                                        </span>
+                                        <span class="card-text">
+                                            Rewards
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" id="cd_5" class="">
+                                        <span class="card-image shopping-cashback-bw">
+                                            
+                                        </span>
+                                        <span class="card-text">
+                                            Shopping &amp; Cashback
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" id="cd_6" class="">
+                                        <span class="card-image lifestyle-bw">
+                                            
+                                        </span>
+                                        <span class="card-text">
+                                            LifeStyle
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <style type="text/css">
+                                .gr-cards-cat-list ul li {
+                                    padding: 10px 20px;
+                                    background: #f8f6e3;
+                                    margin-bottom: 10px;
+                                    border: solid thin #f2f0f0;
+                                    position: relative;
+                                    width: 710px;
+                                }
+                                .gr-cards-cat-list ul li:before {
+                                    content: "";
+                                    position: absolute;
+                                    display: block;
+                                    right: 30px;
+                                    top: 0;
+                                    bottom: 0;
+                                    margin: auto;
+                                    border-radius: 50%;
+                                    width: 30px;
+                                    height: 30px;
+                                    background: url('https://www.goodreturns.in/common_dynamic/images/web/arrow-icon.png') no-repeat center;
+                                    background-color: #f47628;
+                                    -moz-transition: all 0.2s ease-in-out;
+                                    -o-transition: all 0.2s ease-in-out;
+                                    -webkit-transition: all 0.2s ease-in-out;
+                                    transition: all 0.2s ease-in-out;
+                                }
+                                .gr-cards-cat-list ul li a > div {
+                                    float: left;
+                                    border-right: solid thin #dddbcc;
+                                    height: 60px;
+                                }
+                                .gr-cards-name {
+                                    width: 350px;
+                                }
+                                .gr-cards-cat-list {
+                                    margin-bottom: 20px;
+                                }
+                                .gr-cards-fee {
+                                    padding: 10px 20px 0;
+                                }
+                                .gr-cards-type {
+                                    padding: 10px 20px 0;
+                                }
+                                .gr-cards-cat-list ul li a > div:last-child {
+                                    border-right: none;
+                                }
+                                .gr-cards-cat-list ul li:nth-child(2n) {
+                                    background: #dbf2df;
+                                }
+                                .gr-cards-name .gr-cards-img {
+                                    width: 90px;
+                                    float: left;
+                                }
+                            </style>
+                            <div class="tab-content">
+                                <div class="gr-cards-cat-list">
+                                    <ul>
+                                    <?php 
+                                        $sql_cmp=$conn->query("select * from credit_card_features where sub_course_id='$course_id'");
+                                        while($data_cmp=mysqli_fetch_array($sql_cmp))
+                                        {
+                                    ?>
+                                        <li class="cd_<?= $data_cmp['card_type_id'];?> all" data-attr="1"> 
+                                            <a href="javascript:;" class="clearfix">
+                                                <div class="gr-cards-name">
+                                                    <div class="gr-cards-img">
+                                                        <img src="<?= base_url();?>admin_dashboard/uploads/card_images/<?= $data_cmp['card_image'];?>" width="80">
+                                                    </div>
+                                                    <div class="gr-cards-text">
+                                                        <?= $data_cmp['card_name'];?>
+                                                    </div>
+                                                </div>
+                                                <div class="gr-cards-fee">
+                                                    <strong>
+                                                        Annual Fee 
+                                                    </strong>
+                                                    <br>
+                                                    <span><?= $data_cmp['annual_fees'];?></span>
+                                                </div>
+                                                <div class="gr-cards-type">
+                                                    <strong>
+                                                        Card type
+                                                    </strong>
+                                                    
+                                                    <div class="gr-cards-type-block">
+                                                        <span class="rewards">
+                                                            <?php
+                                                                if($data_cmp['card_type_id']==1)
+                                                                {
+                                                            ?>
+                                                                Travel
+                                                            <?php
+                                                                }
+                                                                elseif($data_cmp['card_type_id']==2)
+                                                                {
+                                                            ?>
+                                                                Fuel
+                                                            <?php
+                                                                }
+                                                                elseif($data_cmp['card_type_id']==3)
+                                                                {
+                                                            ?>
+                                                                Premium
+                                                            <?php
+                                                                }
+                                                                elseif($data_cmp['card_type_id']==4)
+                                                                {
+                                                            ?>
+                                                                Rewards
+                                                            <?php
+                                                                }
+                                                                elseif($data_cmp['card_type_id']==5)
+                                                                {
+                                                            ?>
+                                                                Shopping & Cashback
+                                                            <?php
+                                                                }
+                                                                elseif($data_cmp['card_type_id']==6)
+                                                                {
+                                                            ?>
+                                                                LifeStyle
+                                                            <?php
+                                                                }
+                                                            ?>
+                                                        </span>
+                                                    </div>  
+                                                </div>
+                                            </a>
+                                        </li>
+                                    <?php
+                                        }
+                                    ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                        else:
+                    ?>
                     <div id="Information" class="tab-pane fade in active">
                         <div style="padding-top: 20px;color: #000;">
                             <?= $sql1['information'];?>
                         </div>
                     </div>
+                    
                     <div id="current" class="tab-pane fade">
                         <div style="padding-top: 20px;color: #000;">
                             <?= $sql1['current_roi'];?>
@@ -1612,6 +2306,9 @@
                             <?= $sql1['features'];?>
                         </div>
                     </div>
+                    <?php
+                        endif;
+                    ?>
                 </div>
                 <?php
                     endif;
@@ -1674,4 +2371,22 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".gr-cards-tabs li a").click(function(){
+            $('.gr-cards-tabs li a').removeClass('active');
+            $(this).addClass('active');
+            var divID = $(this).attr('id');
+            //alert(divID);
+            if(divID=="all")
+            {
+                $(".all").show();
+            }
+            else{
+                $('.'+divID).show().siblings().hide();
+                //$('#' + divID).addClass('Active').siblings().removeClass('Active');
+            }
+        });
+    });
+</script>
 <?php include('footer.php');?>

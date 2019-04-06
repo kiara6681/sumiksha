@@ -694,6 +694,19 @@
                 $(".rc_upload").addClass("validate[required], custom[validateMIME[pdf|doc|docx|jpg|jpeg|png|JPG|PNG|JPEG]");
             }
         });
+        <?php
+            if($pd_id==8)
+            {
+        ?>
+            //alert('hi');
+            $(".hide_form").addClass('hide');
+        <?php
+            }
+        ?>
+        $(".credit_card_apply").on('click', function(){
+            $(".hide_form").removeClass('hide');
+            $(".hide_content").addClass('hide');
+        });
     });
 </script>
 <section class="gredientPattern container-fluid" style="padding-top: 110px;">
@@ -716,7 +729,7 @@
     </div>
  </section>
 
-<section class="section-side-image clearfix amit" style="background: #4267b2;">
+<section class="section-side-image clearfix amit hide_form" style="background: #4267b2;">
 
     <div class="container">
 
@@ -1807,7 +1820,7 @@
 </section>
 <br>
  
-<section class="section-side-image clearfix amit">
+<section class="section-side-image clearfix amit hide_content">
 
     <div class="container">
 
@@ -2157,7 +2170,7 @@
                                     margin-bottom: 10px;
                                     border: solid thin #f2f0f0;
                                     position: relative;
-                                    width: 710px;
+                                    width: 800px;
                                 }
                                 .gr-cards-cat-list ul li:before {
                                     content: "";
@@ -2195,7 +2208,7 @@
                                     padding: 10px 20px 0;
                                 }
                                 .gr-cards-cat-list ul li a > div:last-child {
-                                    border-right: none;
+                                    /* border-right: none; */
                                 }
                                 .gr-cards-cat-list ul li:nth-child(2n) {
                                     background: #dbf2df;
@@ -2203,6 +2216,11 @@
                                 .gr-cards-name .gr-cards-img {
                                     width: 90px;
                                     float: left;
+                                }
+                                .card_buton{
+                                    float: right!important;
+                                    margin-right: 50px;
+                                    margin-top: -60px;
                                 }
                             </style>
                             <div class="tab-content">
@@ -2277,6 +2295,13 @@
                                                             ?>
                                                         </span>
                                                     </div>  
+                                                </div>
+                                            </a>
+                                            <a href="javascript:;" class="clearfix credit_card_apply">
+                                                <div class="gr-cards-fee card_buton">
+                                                    <button class="btn darkGreyBtn red-bg-btn back_color" style="color: #fff;">
+                                                        Apply Now
+                                                    </button>
                                                 </div>
                                             </a>
                                         </li>

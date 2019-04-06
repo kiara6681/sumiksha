@@ -161,7 +161,12 @@ error_reporting(0);
                                 <tr class="gradeX">
                                     <td><input type="checkbox" name="users[]" value="<?= $data_cmp["id"]; ?>" ></td>
                                     <td><?php echo $count; ?></td>
-                                    <td><?php echo $data_cmp['name']; ?></td>
+                                    <td>
+                                        <h3><?php echo $data_cmp['name']; ?></h3>
+                                        <a href="user_report.php?id=<?= $data_cmp["id"]; ?>" class="btn btn-success btn-sm">
+                                            <i class="fa fa-eye"></i> view user report
+                                        </a>
+                                    </td>
                                     <?php
                                         if($user_row['role_id']==3)
                                         { 

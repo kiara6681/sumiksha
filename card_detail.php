@@ -1,5 +1,4 @@
 <?php include('header.php');?>
-
 <?php
     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $actual_link1 = explode("/", $actual_link);
@@ -7,33 +6,35 @@
     $real_url = $actual_link1[0].'//'.$actual_link1[2];
     if($real_url=='http://localhost' || $real_url=='http://dexus.in')
     {
-        $id=$actual_link1[6];
+        $id = $actual_link1[6];
+        $id = explode("-", $id);
+        $card_id = $id[0];
+        $course_id = $id[2];
+        $pd_id = $id[1];
     }
     else
     {
-        $id=$actual_link1[4];
+        $id = $actual_link1[4];
+        $id = explode("-", $id);
+        $card_id = $id[0];
+        $course_id = $id[2];
+        $pd_id = $id[1];
     }
-    //$id=$_REQUEST['metatitle'];
-    $amit1=$conn->query("select * from courses where metatitle='$id'");
-    $sql=mysqli_fetch_array($amit1);
-    $pd_id=$sql['id'];
 
-    if(empty($pd_id))
-    {
-        $amit=$conn->query("select * from course1 where metatitle='$id'");
-        $sql1=mysqli_fetch_array($amit);
-        $course_id=$sql1['id'];
-        $pd_id=$sql1['course_id'];
-        //exit;
-    }
+    $amit1 = $conn->query("select credit_card_features.*, course1.name as bank_name from credit_card_features left join course1 on course1.id = credit_card_features.sub_course_id where credit_card_features.sub_course_id = '$course_id' AND credit_card_features.id = '$card_id'");
+    $data_cmp = mysqli_fetch_array($amit1);
+
 
     if(!empty($_SESSION['user']))
     {
         $user_id=$conn->query("select * from login where id='".$_SESSION['user']."'");
         $users=mysqli_fetch_array($user_id);
     }
-?>
 
+    $amit=$conn->query("select * from course1 where id='$course_id'");
+    $sql1=mysqli_fetch_array($amit);
+
+?>
 <!-- Business Register Query-->
 <?php
     error_reporting(0);
@@ -469,12 +470,13 @@
                 $qb_format="Null";
             }
         }
+        $card_name=$_REQUEST['card_name'];
 
         $date=date("Y-m-d H:i:s");
     
-       if(mysqli_query($conn, "INSERT INTO `business_enquiry` (`user_id`,`product_id`,`sub_product_id`,`full_name`,`email_id`,`mobile_no`,`whatsapp_no`,`maritial_status`,`occupation`,`salary_type`,`company_name`,`salary_account`,`latest_itr`,`income_per_month`,`gross_salary`,`net_salary`,`business_name`,`business_year`,`business_vintage`,`current_account`,`type_land`,`size_land`,`registered_authority`,`loan_type`,`property_purchase_cost`,`property_address`,`loan_amount`,`house_status`,`residence_address`,`office_address`,`city`,`pincode`,`pan_card_no`,`aadhar_card_no`,`pan_card_img`,`aadhar_card_img`,`bank_statement_img`,`property_site_map_img`,`salary_slip_img`,`travel_check`,`self_age`,`travel_check1`,`spouse_age`,`travel_check2`,`son_age`,`travel_check3`,`daughter_age`,`select_income`,`medical`,`self_asthma`,`spouse_asthma`,`self_diabetes`,`spouse_diabetes`,`self_heart`,`spouse_heart`,`self_hyper`,`spouse_hyper`,`self_thyroid`,`spouse_thyroid`,`term_dob`,`smoker`,`annual_income`,`terms_occupation`,`going_with`,`travelling`,`corporate_company_name`,`insurance_policy`,`home_property_type`,`value_building`,`value_content`,`age_property`,`ownership`,`vechile`,`policy_type`,`vechile_details`,`rto_no`,`rc_upload_img`,`current_policy_img`,`card_number`,`credit_limit`,`available_credit_limit`,`max_card_limit`,`bank_name`,`apply_for_bank`,`latest_card_statement_img`,`middle_name`,`last_name`,`dob`,`father_name`,`mother_name`,`qualification`,`propriter`,`office_phone`,`landmark`,`alternate_card_no`,`designation`,`current_employment`,`work_experience`,`mailing_address`,`qb_format`,`created_at`) 
+       if(mysqli_query($conn, "INSERT INTO `business_enquiry` (`user_id`,`product_id`,`sub_product_id`,`full_name`,`email_id`,`mobile_no`,`whatsapp_no`,`maritial_status`,`occupation`,`salary_type`,`company_name`,`salary_account`,`latest_itr`,`income_per_month`,`gross_salary`,`net_salary`,`business_name`,`business_year`,`business_vintage`,`current_account`,`type_land`,`size_land`,`registered_authority`,`loan_type`,`property_purchase_cost`,`property_address`,`loan_amount`,`house_status`,`residence_address`,`office_address`,`city`,`pincode`,`pan_card_no`,`aadhar_card_no`,`pan_card_img`,`aadhar_card_img`,`bank_statement_img`,`property_site_map_img`,`salary_slip_img`,`travel_check`,`self_age`,`travel_check1`,`spouse_age`,`travel_check2`,`son_age`,`travel_check3`,`daughter_age`,`select_income`,`medical`,`self_asthma`,`spouse_asthma`,`self_diabetes`,`spouse_diabetes`,`self_heart`,`spouse_heart`,`self_hyper`,`spouse_hyper`,`self_thyroid`,`spouse_thyroid`,`term_dob`,`smoker`,`annual_income`,`terms_occupation`,`going_with`,`travelling`,`corporate_company_name`,`insurance_policy`,`home_property_type`,`value_building`,`value_content`,`age_property`,`ownership`,`vechile`,`policy_type`,`vechile_details`,`rto_no`,`rc_upload_img`,`current_policy_img`,`card_number`,`credit_limit`,`available_credit_limit`,`max_card_limit`,`bank_name`,`apply_for_bank`,`latest_card_statement_img`,`middle_name`,`last_name`,`dob`,`father_name`,`mother_name`,`qualification`,`propriter`,`office_phone`,`landmark`,`alternate_card_no`,`designation`,`current_employment`,`work_experience`,`mailing_address`,`qb_format`,`card_name`,`created_at`) 
 
-            VALUES ('$user_id','$product_id','$sub_product_id','$full_name','$email_id','$mobile_no','$whatsapp_no','$maritial_status','$occupation','$salary_type','$company_name','$salary_account','$latest_itr','$income_per_month','$gross_salary','$net_salary','$business_name','$business_year','$business_vintage','$current_account','$type_land','$size_land','$registered_authority','$loan_type','$property_purchase_cost','$property_address','$loan_amount','$house_status','$residence_address','$office_address','$city','$pincode','$pan_card_no','$aadhar_card_no','$pan_card_img','$aadhar_card_img','$bank_statement_img','$property_site_map_img','$salary_slip_img','$travel_check','$self_age','$travel_check1','$spouse_age','$travel_check2','$son_age','$travel_check3','$daughter_age','$select_income','$medical','$self_asthma','$spouse_asthma','$self_diabetes','$spouse_diabetes','$self_heart','$spouse_heart','$self_hyper','$spouse_hyper','$self_thyroid','$spouse_thyroid','$term_dob','$smoker','$annual_income','$terms_occupation','$going_with','$travelling','$corporate_company_name','$insurance_policy','$home_property_type','$value_building','$value_content','$age_property','$ownership','$vechile','$policy_type','$vechile_details','$rto_no','$rc_upload_img','$current_policy_img','$card_number','$credit_limit','$available_credit_limit','$max_card_limit','$bank_name','$apply_for_bank','$latest_card_statement_img','$middle_name','$last_name','$dob','$father_name','$mother_name','$qualification','$propriter','$office_phone','$landmark','$alternate_card_no','$designation','$current_employment','$work_experience','$mailing_address','$qb_format','$date')"))
+            VALUES ('$user_id','$product_id','$sub_product_id','$full_name','$email_id','$mobile_no','$whatsapp_no','$maritial_status','$occupation','$salary_type','$company_name','$salary_account','$latest_itr','$income_per_month','$gross_salary','$net_salary','$business_name','$business_year','$business_vintage','$current_account','$type_land','$size_land','$registered_authority','$loan_type','$property_purchase_cost','$property_address','$loan_amount','$house_status','$residence_address','$office_address','$city','$pincode','$pan_card_no','$aadhar_card_no','$pan_card_img','$aadhar_card_img','$bank_statement_img','$property_site_map_img','$salary_slip_img','$travel_check','$self_age','$travel_check1','$spouse_age','$travel_check2','$son_age','$travel_check3','$daughter_age','$select_income','$medical','$self_asthma','$spouse_asthma','$self_diabetes','$spouse_diabetes','$self_heart','$spouse_heart','$self_hyper','$spouse_hyper','$self_thyroid','$spouse_thyroid','$term_dob','$smoker','$annual_income','$terms_occupation','$going_with','$travelling','$corporate_company_name','$insurance_policy','$home_property_type','$value_building','$value_content','$age_property','$ownership','$vechile','$policy_type','$vechile_details','$rto_no','$rc_upload_img','$current_policy_img','$card_number','$credit_limit','$available_credit_limit','$max_card_limit','$bank_name','$apply_for_bank','$latest_card_statement_img','$middle_name','$last_name','$dob','$father_name','$mother_name','$qualification','$propriter','$office_phone','$landmark','$alternate_card_no','$designation','$current_employment','$work_experience','$mailing_address','$qb_format','$card_name','$date')"))
         {
 
             $succMSG = "Successfully Submitted";      
@@ -695,40 +697,133 @@
             }
         });
         <?php
-            if($pd_id==8)
+            if(!empty($errorMSG)){
+        ?>
+            $(".hide_form").show();
+            $(".card_details").hide();
+        <?php
+            }
+            else
             {
         ?>
-            //alert('hi');
-            $(".hide_form").addClass('hide');
+            $(".hide_form").hide();
+            $('.credit_card_apply').on('click', function(){
+                $(".hide_form").show();
+                $(".card_details").hide();
+            });
         <?php
             }
         ?>
-        $(".credit_card_apply").on('click', function(){
-            $(".hide_form").removeClass('hide');
-            $(".hide_content").addClass('hide');
-        });
     });
 </script>
+<style type="text/css">
+    .gr-cards-image.inner {
+        background: #0e3345;
+        position: relative;
+        height: 180px;
+        margin-bottom: 10px;
+    }
+    .gr-cards-image span {
+        display: block;
+        font-size: 20px;
+        color: #ffffff;
+        padding-left: 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        width: 360px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .gr-cards-image.inner strong {
+        color: #e52941;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: normal;
+        display: block;
+    }
+    .gr-cards-image-block {
+        position: absolute;
+        width: 200px;
+        top: 0;
+        right: 20px;
+        bottom: 0;
+        margin: auto;
+    }
+    .container_intro_desc {
+        margin: 2px 0 10px 0;
+        padding: 1px;
+        text-align: justify;
+        font-size: 15px;
+    }
+    .gr-cards-inner-list ol, .container_intro_desc ul {
+        font-size: 15px;
+        line-height: inherit;
+        margin: 1px;
+        padding: 3px 1px 1px 18px;
+    }    
+    .gr-cards-inner-list ol, .container_intro_desc ul li {
+        list-style: disc;
+    }
+    .gr-cards-inner {
+        background: #f7f7f7;
+        margin-bottom: 20px;
+        padding: 0 10px 10px;
+        border: solid thin #f2f0f0;
+    }
+    .gr-cards-inner-block {
+        padding: 20px 10px 10px;
+        border-bottom: solid thin #dddbcc;
+    }
+    .clearfix {
+        display: block;
+    }
+    .card-details.gr-cards-inner-block > div {
+        height: auto;
+    }
+    .gr-cards-inner-block > div {
+        float: left;
+        width: 24%;
+        border-right: solid thin #dddbcc;
+        height: 55px;
+        padding: 10px 0;
+    }
+    .gr-cards-inner-block > div strong {
+        display: block;
+        font-weight: normal;
+        color: #000000;
+        padding: 0 20px;
+    }
+    .gr-cards-inner-block > div span {
+        color: #656262;
+        padding-top: 10px;
+        display: block;
+        position: relative;
+        padding-bottom: 10px;
+        line-height: 30px;
+        padding: 0 20px;
+    }
+    .gr-cards-inner-list {
+        padding: 10px 0 0;
+    }
+    .gr-cards-inner-list span {
+        font-size: 16px;
+    }
+    .gr-cards-inner-list ul {
+        margin-left: 30px;
+        padding-top: 10px;
+    }
+    .gr-cards-inner-list ul li {
+        color: #656262;
+        font-size: 14px;
+        padding: 5px 0;
+        list-style-image: url('https://www.goodreturns.in/common_dynamic/images/web/red-arrow.png');
+    }
+</style>
 <section class="gredientPattern container-fluid" style="padding-top: 110px;">
     <div class="pageSection row magic-3">
-<!--         <?php
-    if($pd_id==8 && $course_id!=42)
-    {
-        $row=$conn->query("select * from course1 where course_id='8'");
-        $sql=mysqli_fetch_array($row);
-?>
-<img src="<?= base_url();?>admin_dashboard/uploads/courses/<?= $sql['image'];?>" class="img-responsive">
-<?php
-    }
-    else{
-?>
-<img src="<?= base_url();?>admin_dashboard/uploads/courses/<?= $sql1['image'];?>" class="img-responsive">
-<?php
-    }
-?> -->
     </div>
- </section>
-
+</section>
 <section class="section-side-image clearfix amit hide_form" style="background: #4267b2;">
 
     <div class="container">
@@ -795,6 +890,7 @@
                         <input name="user_id" value="<?= $users['id'];?>" type="hidden">
                         <input name="product_id" value="<?= $pd_id;?>" type="hidden">
                         <input name="sub_product_id" value="<?= $course_id;?>" type="hidden">
+                        <input name="card_name" value="<?= $data_cmp['card_name'];?>" type="hidden">
                         <input name="qb_format" value="1" type="hidden">
                         <div class="row">
 
@@ -1055,6 +1151,7 @@
                         <input name="user_id" value="<?= $users['id'];?>" type="hidden">
                         <input name="product_id" value="<?= $pd_id;?>" type="hidden">
                         <input name="sub_product_id" value="<?= $course_id;?>" type="hidden">
+                        <input name="card_name" value="<?= $data_cmp['card_name'];?>" type="hidden">
                         <div class="row">
 
                             <div class="col-md-4">
@@ -1818,595 +1915,117 @@
         </div>
     </div>
 </section>
-<br>
- 
-<section class="section-side-image clearfix amit hide_content">
+<section class="section-side-image card_details">
 
     <div class="container">
 
         <div class="row">
 
-            <div class="col-lg-12">
-                <?php
-                    if($course_id==29):
-                ?>
-                <div class="table-responsive">          
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Scheme Name</th>
-                                <th>NAV (<i class="fa fa-inr"></i>)</th>
-                                <th>3M</th>
-                                <th>6M</th>
-                                <th>1 Yr</th>
-                                <th>3 Yrs</th>
-                                <th>5 Yrs</th>
-                                <th>YTD</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
-                                $sql_cmp = $conn->query("select * from mutual_funds order by id desc limit 0,10");
-                                $count=1;
-                                while($data_cmp=mysqli_fetch_array($sql_cmp))
-                                {
-                            ?>
-                            <tr>
-                                <td><?= $data_cmp['scheme_name']; ?></td>
-                                <td><?= $data_cmp['nav']; ?></td>
-                                <td><?= $data_cmp['3M']; ?></td>
-                                <td><?= $data_cmp['6M']; ?></td>
-                                <td><?= $data_cmp['1yr']; ?></td>
-                                <td><?= $data_cmp['3yrs']; ?></td>
-                                <td><?= $data_cmp['5yrs']; ?></td>
-                                <td><?= $data_cmp['ytd']; ?></td>
-                            </tr>
-                            <?php
-                                $count++;}
-                            ?>
-                        </tbody>
-                    </table>
+            <div class="col-lg-8">
+                <div class="gr-cards-fee card_buton text-center">
+                    <a href="javascript:;" class="btn darkGreyBtn red-bg-btn back_color credit_card_apply" style="color: #fff;    margin-top: 20px;">
+                        Apply Now
+                    </a>
                 </div>
-                <?php
-                    elseif($course_id==31):
-                ?>
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">Open Issue</a></li>
-                    <li><a data-toggle="tab" href="#menu1">New Listing</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div id="home" class="tab-pane fade in active">
-                        <div class="table-responsive">          
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Company</th>
-                                        <th>Open Date</th>
-                                        <th>Close Date</th>
-                                        <th>Face Value (<i class="fa fa-inr"></i>)</th>
-                                        <th>Price Band (<i class="fa fa-inr"></i>)</th>
-                                        <th>Issue Size (<i class="fa fa-inr"></i>)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php 
-                                        $sql_cmp = $conn->query("select * from ipo where ipo_type='1' order by id desc limit 0,10");
-                                        $count=1;
-                                        while($data_cmp=mysqli_fetch_array($sql_cmp))
-                                        {
-                                    ?>
-                                    <tr>
-                                        <td><?= $data_cmp['company']; ?></td>
-                                        <td><?= $data_cmp['open_date']; ?></td>
-                                        <td><?= $data_cmp['close_date']; ?></td>
-                                        <td><?= $data_cmp['face_value']; ?></td>
-                                        <td><?= $data_cmp['price_brand']; ?></td>
-                                        <td><?= $data_cmp['issue_size']; ?></td>
-                                    </tr>
-                                    <?php
-                                        $count++;}
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div id="menu1" class="tab-pane fade">
-                        <div class="table-responsive">          
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Company</th>
-                                        <th>Listing Date</th>
-                                        <th>Listing Price (<i class="fa fa-inr"></i>)</th>
-                                        <th>Issue Price (<i class="fa fa-inr"></i>)</th>
-                                        <th>LTP (<i class="fa fa-inr"></i>)</th>
-                                        <th>Chg (%)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php 
-                                    $sql_cmp = $conn->query("select * from ipo where ipo_type='2' order by id desc limit 0,10");
-                                    $count=1;
-                                    while($data_cmp=mysqli_fetch_array($sql_cmp))
-                                    {
-                                ?>
-                                    <tr>
-                                        <td><?php echo $data_cmp['company']; ?></td>
-                                        <td><?php echo $data_cmp['open_date']; ?></td>
-                                        <td><?php echo $data_cmp['close_date']; ?></td>
-                                        <td><?php echo $data_cmp['face_value']; ?></td>
-                                        <td><?php echo $data_cmp['price_brand']; ?></td>
-                                        <td><?php echo $data_cmp['issue_size']; ?></td>
-                                    </tr>
-                                <?php
-                                    $count++;}
-                                ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <?php
-                    else:
-                ?>
-                <ul class="nav nav-tabs">                    
-                    <?php
-                        if($pd_id==8):
-                    ?>
-                    <li><a data-toggle="tab" href="#Information">Information</a></li>
-
-                    <li class="active"><a data-toggle="tab" href="#features">Cards Features and Benefits</a></li>
-                    <?php
-                        else:
-                    ?>
-                    <li class="active"><a data-toggle="tab" href="#Information">Information</a></li>
-                    <li><a data-toggle="tab" href="#current">Current ROI and Offer</a></li>
-                    <li><a data-toggle="tab" href="#features">Features and Benefits</a></li>
-                    <?php
-                        endif;
-                    ?>
-                </ul>
-                <style type="text/css">
-                    .gr-cards-tabs ul {
-                        margin: 20px 0;
-                    }
-                    .gr-cards-tabs ul li {
-                        display: inline-block;
-                        -webkit-box-orient: vertical;
-                        display: -webkit-inline-box;
-                        list-style-type: none;
-                        text-align: center;
-                        -webkit-flex-basis: 14.28%;
-                        -moz-flex-basis: 14.28%;
-                        -ms-flex-basis: 14.28%;
-                        flex-basis: 14.28%;
-                        margin-right: 45px;
-                    }
-                    .gr-cards-tabs ul li a:hover .card-image, .gr-cards-tabs ul li a.active .card-image {
-                        background-color: #f47323;
-                        border: solid thin #f47323;
-                    }
-                    .gr-cards-tabs ul li a span.card-image {
-                        width: 36px;
-                        height: 36px;
-                        display: block;
-                        margin: auto;
-                        border-radius: 50%;
-                        border: solid thin #1e1a1e;
-                        position: relative;
-                    }
-                    .gr-cards-tabs ul li a span.card-image:before {
-                        content: "";
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        left: 0;
-                        bottom: 0;
-                        margin: auto;
-                        width: 20px;
-                        height: 20px;
-                        background-size: contain;
-                    }
-                    a:hover .credit-card-bw:before, a.active .credit-card-bw:before {
-                        background: url('https://www.goodreturns.in/common_dynamic/images/web/credit_card_w.svg') center no-repeat;
-                        display: block;
-                    }
-                    .credit-card-bw:before {
-                        background: url('https://www.goodreturns.in/common_dynamic/images/web/credit_card.svg') center no-repeat;
-                        display: block;
-                    }
-                    .gr-cards-tabs ul li a:hover .card-text, .gr-cards-tabs ul li a.active .card-text {
-                        color: #f47323;
-                    }
-                    .gr-cards-tabs ul li a span.card-text {
-                        padding: 5px 0;
-                        width: 85px;
-                        margin: auto;
-                    }
-                    a:hover .travel-bw:before, a.active .travel-bw:before {
-                        background: url('https://www.goodreturns.in/common_dynamic/images/web/cc_category_w_1.svg') center no-repeat;
-                        display: block;
-                    }
-                    .travel-bw:before {
-                        background: url('https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_1.svg') center no-repeat;
-                        display: block;
-                    }
-                    a:hover .fuel-bw:before, a.active .fuel-bw:before {
-                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_w_2.svg) center no-repeat;
-                        display: block;
-                    }
-                    .fuel-bw:before {
-                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_2.svg) center no-repeat;
-                        display: block;
-                    }
-                    a:hover .premium-bw:before, a.active .premium-bw:before {
-                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_w_3.svg) center no-repeat;
-                        display: block;
-                    }
-                    .premium-bw:before {
-                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_3.svg) center no-repeat;
-                        display: block;
-                    }
-                    a:hover .rewards-bw:before, a.active .rewards-bw:before {
-                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_w_4.svg) center no-repeat;
-                        display: block;
-                    }
-                    .rewards-bw:before {
-                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_4.svg) center no-repeat;
-                        display: block;
-                    }
-                    a:hover .shopping-cashback-bw:before, a.active .shopping-cashback-bw:before {
-                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_w_5.svg) center no-repeat;
-                        display: block;
-                    }
-                    .shopping-cashback-bw:before {
-                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_5.svg) center no-repeat;
-                        display: block;
-                    }
-                    .lifestyle-bw:before {
-                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_6.svg) center no-repeat;
-                        display: block;
-                    }
-                    .lifestyle-bw:before {
-                        background: url(https://www.goodreturns.in/common_dynamic/images/web/cc_category_b_6.svg) center no-repeat;
-                        display: block;
-                    }
-                    .clearfix:after {
-                        clear: both;
-                        content: ' ';
-                        display: block;
-                        font-size: 0;
-                        line-height: 0;
-                        visibility: hidden;
-                        width: 0;
-                        height: 0;
-                    }
-                </style>
-                <div class="tab-content">
-                    <?php
-                        if($pd_id==8):
-                    ?>
-                        <div id="Information" class="tab-pane fade">
-                            <div style="padding-top: 20px;color: #000;">
-                                <?= $sql1['information'];?>
-                            </div>
-                        </div>
-                        <div id="features" class="tab-pane fade in active gr-cards-tabs">
-                            <ul>
-                                <li>
-                                    <a href="javascript:void(0)" class="active" id="all">
-                                        <span class="card-image credit-card-bw">
-                                        </span>
-                                        <span class="card-text">
-                                            All
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                                <li>
-                                    <a href="javascript:void(0)" id="cd_1" class="">
-                                        <span class="card-image travel-bw">
-                                            
-                                        </span>
-                                        <span class="card-text">
-                                            Travel
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" id="cd_2" class="">
-                                        <span class="card-image fuel-bw">
-                                            
-                                        </span>
-                                        <span class="card-text">
-                                            Fuel
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" id="cd_3" class="">
-                                        <span class="card-image premium-bw">
-                                            
-                                        </span>
-                                        <span class="card-text">
-                                            Premium
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" id="cd_4" class="">
-                                        <span class="card-image rewards-bw">
-                                            
-                                        </span>
-                                        <span class="card-text">
-                                            Rewards
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" id="cd_5" class="">
-                                        <span class="card-image shopping-cashback-bw">
-                                            
-                                        </span>
-                                        <span class="card-text">
-                                            Shopping &amp; Cashback
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" id="cd_6" class="">
-                                        <span class="card-image lifestyle-bw">
-                                            
-                                        </span>
-                                        <span class="card-text">
-                                            LifeStyle
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <style type="text/css">
-                                .gr-cards-cat-list ul li {
-                                    padding: 10px 20px;
-                                    background: #f8f6e3;
-                                    margin-bottom: 10px;
-                                    border: solid thin #f2f0f0;
-                                    position: relative;
-                                    width: 700px;
-                                }
-                                .gr-cards-cat-list ul li:before {
-                                    content: "";
-                                    position: absolute;
-                                    display: block;
-                                    right: 30px;
-                                    top: 0;
-                                    bottom: 0;
-                                    margin: auto;
-                                    border-radius: 50%;
-                                    width: 30px;
-                                    height: 30px;
-                                    background: url('https://www.goodreturns.in/common_dynamic/images/web/arrow-icon.png') no-repeat center;
-                                    background-color: #f47628;
-                                    -moz-transition: all 0.2s ease-in-out;
-                                    -o-transition: all 0.2s ease-in-out;
-                                    -webkit-transition: all 0.2s ease-in-out;
-                                    transition: all 0.2s ease-in-out;
-                                }
-                                .gr-cards-cat-list ul li a > div {
-                                    float: left;
-                                    border-right: solid thin #dddbcc;
-                                    height: 60px;
-                                }
-                                .gr-cards-name {
-                                    width: 350px;
-                                }
-                                .gr-cards-cat-list {
-                                    margin-bottom: 20px;
-                                }
-                                .gr-cards-fee {
-                                    padding: 10px 20px 0;
-                                }
-                                .gr-cards-type {
-                                    padding: 10px 20px 0;
-                                }
-                                .gr-cards-cat-list ul li a > div:last-child {
-                                    /* border-right: none; */
-                                }
-                                .gr-cards-cat-list ul li:nth-child(2n) {
-                                    background: #dbf2df;
-                                }
-                                .gr-cards-name .gr-cards-img {
-                                    width: 90px;
-                                    float: left;
-                                }
-                                .card_buton{
-                                    float: right!important;
-                                    margin-right: 50px;
-                                    margin-top: -60px;
-                                }
-                            </style>
-                            <div class="tab-content">
-                                <div class="gr-cards-cat-list">
-                                    <ul>
-                                    <?php 
-                                        $sql_cmp=$conn->query("select * from credit_card_features where sub_course_id='$course_id'");
-                                        while($data_cmp=mysqli_fetch_array($sql_cmp))
-                                        {
-                                    ?>
-                                        <li class="cd_<?= $data_cmp['card_type_id'];?> all" data-attr="1"> 
-                                            <a href="<?= base_url();?>card_detail/<?= $data_cmp['id'];?>-<?= $pd_id;?>-<?= $course_id;?>" class="clearfix">
-                                                <div class="gr-cards-name">
-                                                    <div class="gr-cards-img">
-                                                        <img src="<?= base_url();?>admin_dashboard/uploads/card_images/<?= $data_cmp['card_image'];?>" width="80">
-                                                    </div>
-                                                    <div class="gr-cards-text">
-                                                        <?= $data_cmp['card_name'];?>
-                                                    </div>
-                                                </div>
-                                                <div class="gr-cards-fee">
-                                                    <strong>
-                                                        Annual Fee 
-                                                    </strong>
-                                                    <br>
-                                                    <span><?= $data_cmp['annual_fees'];?></span>
-                                                </div>
-                                                <div class="gr-cards-type">
-                                                    <strong>
-                                                        Card type
-                                                    </strong>
-                                                    
-                                                    <div class="gr-cards-type-block">
-                                                        <span class="rewards">
-                                                            <?php
-                                                                if($data_cmp['card_type_id']==1)
-                                                                {
-                                                            ?>
-                                                                Travel
-                                                            <?php
-                                                                }
-                                                                elseif($data_cmp['card_type_id']==2)
-                                                                {
-                                                            ?>
-                                                                Fuel
-                                                            <?php
-                                                                }
-                                                                elseif($data_cmp['card_type_id']==3)
-                                                                {
-                                                            ?>
-                                                                Premium
-                                                            <?php
-                                                                }
-                                                                elseif($data_cmp['card_type_id']==4)
-                                                                {
-                                                            ?>
-                                                                Rewards
-                                                            <?php
-                                                                }
-                                                                elseif($data_cmp['card_type_id']==5)
-                                                                {
-                                                            ?>
-                                                                Shopping & Cashback
-                                                            <?php
-                                                                }
-                                                                elseif($data_cmp['card_type_id']==6)
-                                                                {
-                                                            ?>
-                                                                LifeStyle
-                                                            <?php
-                                                                }
-                                                            ?>
-                                                        </span>
-                                                    </div>  
-                                                </div>
-                                            </a>
-                                        </li>
-                                    <?php
-                                        }
-                                    ?>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    <?php
-                        else:
-                    ?>
-                    <div id="Information" class="tab-pane fade in active">
-                        <div style="padding-top: 20px;color: #000;">
-                            <?= $sql1['information'];?>
-                        </div>
-                    </div>
+                <div class="gr-cards">
                     
-                    <div id="current" class="tab-pane fade">
-                        <div style="padding-top: 20px;color: #000;">
-                            <?= $sql1['current_roi'];?>
+                    <div class="gr-cards-head">
+                        <!--<div class="container_heading">
+                            <h1>American Express Credit Cards</h1>
+                        </div>-->
+                        
+                        <div class="gr-cards-image inner">
+                            <h1>
+                                <span>
+                                    <?= $data_cmp['card_name'];?>
+                                    <strong><?= $data_cmp['bank_name'];?></strong>
+                                </span>
+                            </h1>
+                            <div class="gr-cards-image-block">
+                                <img src="<?= base_url();?>admin_dashboard/uploads/card_images/<?= $data_cmp['card_image'];?>" width="200" style="margin-top: 25px;">
+                            </div>                          
                         </div>
-                    </div>                    
-                    <div id="features" class="tab-pane fade">
-                        <div style="padding-top: 20px;color: #000;">
-                            <?= $sql1['features'];?>
-                        </div>
+                        <div class="gr-cards-inner">
+                            <div class="gr-cards-inner-block clearfix  card-details">
+                                <div class="gr-cards-fee">
+                                    <strong>
+                                        Annual Fee
+                                    </strong>
+                                    <span><?= $data_cmp['annual_fees'];?></span>
+                                </div>
+                                <!--                                                
+                                <div class="gr-cards-fee">
+                                <strong>
+                                    Network 
+                                </strong>
+                                <span>AMEX</span>
+                                </div> -->
+                                <div class="gr-cards-type">
+                                    <strong>
+                                        Card Type 
+                                    </strong>
+                                    <span class="rewards">                
+                                        <?php
+                                            if($data_cmp['card_type_id']==1)
+                                            {
+                                        ?>
+                                            Travel
+                                        <?php
+                                            }
+                                            elseif($data_cmp['card_type_id']==2)
+                                            {
+                                        ?>
+                                            Fuel
+                                        <?php
+                                            }
+                                            elseif($data_cmp['card_type_id']==3)
+                                            {
+                                        ?>
+                                            Premium
+                                        <?php
+                                            }
+                                            elseif($data_cmp['card_type_id']==4)
+                                            {
+                                        ?>
+                                            Rewards
+                                        <?php
+                                            }
+                                            elseif($data_cmp['card_type_id']==5)
+                                            {
+                                        ?>
+                                            Shopping & Cashback
+                                        <?php
+                                            }
+                                            elseif($data_cmp['card_type_id']==6)
+                                            {
+                                        ?>
+                                            LifeStyle
+                                        <?php
+                                            }
+                                        ?>
+                                    </span>
+                                </div>
+                            </div>            
+                        </div>            
                     </div>
-                    <?php
-                        endif;
-                    ?>
+                    <?= $data_cmp['card_details'];?>
+                    <div class="clear"></div>
+                    
+                    <div class="clear"></div>
+               
+                <!-- Center content ends -->
+                    
                 </div>
-                <?php
-                    endif;
-                ?>
+                <div class="gr-cards-fee card_buton text-center">
+                    <a href="javascript:;" class="btn darkGreyBtn red-bg-btn back_color credit_card_apply" style="color: #fff;margin-top: 20px;margin-bottom: 20px;">
+                        Apply Now
+                    </a>
+                </div>
             </div>
 
         </div>
 
     </div>
+
 </section> 
-<br>
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="myModalLabel">Get a Call from advisor</h4>
-            </div>
-            <div class="modal-body">
-                <form id="formID" class="job-form" action="" method="post" enctype="multipart/form-data">
-                 
-                    <input name="user_id" value="<?= $users['id'];?>" type="hidden">
-                    <input name="product_id" value="<?= $pd_id;?>" type="hidden">
-                    <input name="sub_product_id" value="<?= $course_id;?>" type="hidden">
-                    <div class="row">
-
-                        <div class="col-md-4">
-                            <div class="form-cont">
-                                <label>Full Name <span style="color: red">*</span></label>
-
-                                <input name="full_name" type="text" class="validate[required] form-control"/>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-cont">
-                                <label>Email Id <span style="color: red">*</span></label>
-
-                                <input name="email_id" type="email" class="validate[required,custom[email]] form-control"/>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-cont">
-                                <label>Mobile No. <span style="color: red">*</span></label>
-
-                                <input name="mobile_no" type="tel" class="validate[required,custom[phone],maxSize[12],minSize[10]] form-control"/>
-
-                            </div>
-                        </div>        
-                    </div> 
-                    <div class="clearfix"></div>
-                    <div class="row text-center">
-                        <input type="submit" name="business_register" value="SUBMIT" class="btn btn-primary sender_submit">
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".gr-cards-tabs li a").click(function(){
-            $('.gr-cards-tabs li a').removeClass('active');
-            $(this).addClass('active');
-            var divID = $(this).attr('id');
-            //alert(divID);
-            if(divID=="all")
-            {
-                $(".all").show();
-            }
-            else{
-                $('.'+divID).show().siblings().hide();
-                //$('#' + divID).addClass('Active').siblings().removeClass('Active');
-            }
-        });
-    });
-</script>
 <?php include('footer.php');?>

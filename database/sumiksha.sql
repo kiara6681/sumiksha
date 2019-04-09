@@ -76,3 +76,6 @@ ALTER TABLE `credit_card_features`
 --
 ALTER TABLE `credit_card_features`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+/************************** ALTER TABLE `business_enquiry` ADD `card_name` 09/04/2019 ***************************/
+ALTER TABLE `business_enquiry` ADD `card_name` VARCHAR(255) NULL AFTER `qb_format`;

@@ -51,6 +51,48 @@
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-left"><h5>Total Loan Amount</h5></span>
+                </div>
+                <div class="ibox-content">
+                    <?php
+                        $sql = $conn->query("SELECT sum(approve_loan) as total_amount FROM `refer_earn` where user_id='$user_id'");
+                        $row = mysqli_fetch_array($sql);
+                    ?>
+                    <h1 class="no-margins"><?= $row['total_amount'];?> INR</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-info pull-left"><h5>Total Credit Cards</h5></span>
+                </div>
+                <div class="ibox-content">
+                    <?php
+                        $sql = $conn->query("SELECT count(*) as total_cards FROM `refer_earn` where user_id='$user_id' and product_id = 8 and status = 1");
+                        $row = mysqli_fetch_array($sql);
+                    ?>
+                    <h1 class="no-margins"><?= $row['total_cards'];?> Cards</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-primary pull-left"><h5>Total Insurance</h5></span>
+                </div>
+                <div class="ibox-content">
+                    <?php
+                        $sql = $conn->query("SELECT count(*) as total_insurance FROM `refer_earn` where user_id='$user_id' and product_id = 5 and status = 1");
+                        $row = mysqli_fetch_array($sql);
+                    ?>
+                    <h1 class="no-margins"><?= $row['total_insurance'];?> Insurance</h1>
+                </div>
+            </div>
+        </div>
         <div class="col-lg-12">
             <?php
                 if (isset($succMSG)) 
@@ -74,10 +116,10 @@
                                     <th>S.No.</th>
                                     <th>Product</th>
                                     <th>Sub Product</th>
-                                    <th>Required Loan Amount</th>
+                                    <!-- <th>Required Loan Amount</th> -->
                                     <th>Approved Loan Amount</th>
-                                    <th>Login Bank</th>
-                                    <th>Login Date</th>
+<!--                                     <th>Login Bank</th>
+<th>Login Date</th> -->
                                     <th>Net Premium</th>
                                     <th>TP</th>
                                 </tr>
@@ -93,10 +135,10 @@
                                 <td><?php echo $count; ?></td>
                                 <td><?php echo $data_cmp['product']; ?></td>
                                 <td><?php echo $data_cmp['sub_product']; ?></td>
-                                <td style="color: red"><?php echo $data_cmp['required_loan']; ?></td>
+                                <!-- <td style="color: red"><?php echo $data_cmp['required_loan']; ?></td> -->
                                 <td style="color: green"><?php echo $data_cmp['approve_loan']; ?></td>
-                                <td style="color: green"><?php echo $data_cmp['login_bank']; ?></td>
-                                <td style="color: green"><?php echo $data_cmp['login_date']; ?></td>
+<!--                                 <td style="color: green"><?php echo $data_cmp['login_bank']; ?></td>
+<td style="color: green"><?php echo $data_cmp['login_date']; ?></td> -->
                                 <td style="color: green"><?php echo $data_cmp['net_premium']; ?></td>
                                 <td style="color: green"><?php echo $data_cmp['tp']; ?></td>
                             </tr>

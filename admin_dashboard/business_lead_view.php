@@ -331,7 +331,20 @@ if(isset($_POST['addrules']))
                                         <input name="sub_product_id" value="<?= $course_id;?>" type="hidden">
                                         <input name="qb_format" value="1" type="hidden">
                                         <div class="row">
-
+                                            <?php
+                                            if(!empty($data1['card_name'])):
+                                                if($course_id==35 || $course_id==55):
+                                            ?>
+                                            <div class="col-md-12">
+                                                <div class="form-cont">
+                                                    <label>Card Name</label>
+                                                    <input name="card_name" value="<?= $data1['card_name'];?>" type="text" class="form-control" readonly>
+                                                </div>
+                                            </div> 
+                                            <?php
+                                                    endif;
+                                                endif;
+                                            ?>
                                             <div class="col-md-4">
                                                 <div class="form-cont">
                                                     <?php
@@ -615,7 +628,19 @@ if(isset($_POST['addrules']))
                                         }
                                     ?>
                                     <form method="post" class="form-horizontal" enctype="multipart/form-data" class="parsley-form" id="agent_form">
-                                       <div class="col-md-4">
+                                        <?php
+                                            if($pd_id==8):
+                                        ?>
+                                        <div class="col-md-12">
+                                            <div class="form-cont">
+                                                <label>Card Name</label>
+                                                <input name="card_name" value="<?= $data1['card_name'];?>" type="text" class="form-control" readonly>
+                                            </div>
+                                        </div> 
+                                        <?php
+                                            endif;
+                                        ?>
+                                        <div class="col-md-4">
                                             <div class="form-cont">
                                                 <label>Product Name</label>
                                                 <input name="product_name" value="<?= $data1['product_name'];?>" type="text" class="form-control" readonly>

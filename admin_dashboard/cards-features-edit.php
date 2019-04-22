@@ -109,6 +109,7 @@ if(isset($_POST['addcourse1']))
                                         <option value="4">Rewards</option>
                                         <option value="5">Shopping & Cashback</option>
                                         <option value="6">LifeStyle</option>
+                                        <option value="7">Low Fee</option>
                                     </select>
                                 </div>
                             </div>  

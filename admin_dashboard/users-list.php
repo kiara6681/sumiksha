@@ -23,71 +23,75 @@ error_reporting(0);
         {
             $delt=1;
         }
+
         else
         {
             $delt=0;
         }
+
         if(!empty($unique_code)){
+
             $approve = "UPDATE `login` SET `status` = '".$delt."', `unique_id` = '".$unique_code."' WHERE `id` = '$id'";
-        }
-        else{
-            $approve = "UPDATE `login` SET `status` = '".$delt."' WHERE `id` = '$id'";
-        }
 
-        if(!empty($unique_code))
-        {
-
-            $message="";
-            $message .="Your Unique Code is : ".$unique_code."";
-            $subject  ="Reset Password"; //like--- Resume From Website
-            $headers  ="";
-            include("../PHPMailer/PHPMailerAutoload.php"); //Here magic Begen we include PHPMailer Library.
-            include("../PHPMailer/class.phpmailer.php");   
-            $mail = new PHPMailer;
-                                          // Enable verbose debug output
-            $mail->isSMTP(); // Set mailer to use SMTP
-            $mail->Host = 'mailout.one.com;';  // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true; // Enable SMTP authentication
-            $mail->Username = 'test@sumikshaservices.com';// SMTP username 
-            $mail->Password = '?t@NYp^L.Fay'; // SMTP password 
-            $mail->SMTPSecure = 'tls';// Enable TLS encryption, `ssl` also accepted
-            $mail->Port = 25; 
-            $mail->SMTPDebug = 0; // TCP port to connect to
-            $mail->setFrom('test@sumikshaservices.com', 'Unique Code'); //You Can add your own From mail
-            $mail->addAddress($email_id); // Add a recipient id where you want to send mail 
-            
-            $mail->addAttachment($_FILES['cv']['tmp_name'],$_FILES['cv']['name']); //This line Use to Keep User Txt,Doc,pdf file ,attachment      
-            $mail->addReplyTo('info@sumikshaservices.com'); //where you want reply from user
-            $mail->isHTML(true); 
-            $mail->Subject=''.$subject;
-            $mail->Body=''.$message;
-            if(!$mail->send()) 
-                {                            
-                    echo "Error in Form :- $mail->ErrorInfo!. We will Fix This soon";
-                }
-            else 
-                {    
-                    echo "<script language='javascript'>alert('Successfully Submitted!');window.location = 'users-list.php';</script>";              
-                }
-            return true;    
-        }
-        else
-        {
             if($conn->query($approve))
             {
-                echo "<script language='javascript'>alert('Successfully Submitted!');window.location = 'users-list.php';</script>";
-            }            
+
+                $message="";
+                $message .="Your Unique Code is : ".$unique_code."";
+                $subject  ="Reset Password"; //like--- Resume From Website
+                $headers  ="";
+                include("../PHPMailer/PHPMailerAutoload.php"); //Here magic Begen we include PHPMailer Library.
+                include("../PHPMailer/class.phpmailer.php");   
+                $mail = new PHPMailer;
+                                              // Enable verbose debug output
+                $mail->isSMTP(); // Set mailer to use SMTP
+                $mail->Host = 'mailout.one.com;';  // Specify main and backup SMTP servers
+                $mail->SMTPAuth = true; // Enable SMTP authentication
+                $mail->Username = 'test@sumikshaservices.com';// SMTP username 
+                $mail->Password = '?t@NYp^L.Fay'; // SMTP password 
+                $mail->SMTPSecure = 'tls';// Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 25; 
+                $mail->SMTPDebug = 0; // TCP port to connect to
+                $mail->setFrom('test@sumikshaservices.com', 'Unique Code'); //You Can add your own From mail
+                $mail->addAddress($email_id); // Add a recipient id where you want to send mail 
+                
+                $mail->addAttachment($_FILES['cv']['tmp_name'],$_FILES['cv']['name']); //This line Use to Keep User Txt,Doc,pdf file ,attachment      
+                $mail->addReplyTo('info@sumikshaservices.com'); //where you want reply from user
+                $mail->isHTML(true); 
+                $mail->Subject=''.$subject;
+                $mail->Body=''.$message;
+                if(!$mail->send()) 
+                    {                            
+                        echo "<script language='javascript'>alert('Error in Form :- $mail->ErrorInfo!. We will Fix This soon');window.location = 'users-list.php';</script>";
+                    }
+                else 
+                    {    
+                        echo "<script language='javascript'>alert('Successfully Submitted!');window.location = 'users-list.php';</script>";              
+                    }
+                return true; 
+                
+            }
         }
-    }
+        
+        else{
 
-    //delete user
-    $rowCount = count($_POST["users"]);
-        for($i=0;$i<$rowCount;$i++) {
+                $approve = "UPDATE `login` SET `status` = '".$delt."' WHERE `id` = '$id'";
 
-        $conn->query("DELETE FROM login WHERE id='" . $_POST["users"][$i] . "'");
+                if($conn->query($approve))
+                {
+                    echo "<script language='javascript'>alert('Successfully Submitted!');window.location = 'users-list.php';</script>";
+                }
+            }
+        }
 
-        header("Location: ".base_url()."admin_dashboard/users-list.php");
-    }
+        //delete user
+        $rowCount = count($_POST["users"]);
+            for($i=0;$i<$rowCount;$i++) {
+
+            $conn->query("DELETE FROM login WHERE id='" . $_POST["users"][$i] . "'");
+
+            header("Location: ".base_url()."admin_dashboard/users-list.php");
+        }
 
 ?>
 <script>

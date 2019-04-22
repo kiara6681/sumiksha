@@ -57,11 +57,39 @@
                     <span class="label label-success pull-left"><h5>Total Loan Amount</h5></span>
                 </div>
                 <div class="ibox-content">
-                    <?php
-                        $sql = $conn->query("SELECT sum(approve_loan) as total_amount FROM `refer_earn` where user_id='$user_id'");
-                        $row = mysqli_fetch_array($sql);
-                    ?>
-                    <h1 class="no-margins"><?= $row['total_amount'];?> INR</h1>
+
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <tbody>
+                            <tr>
+                                <th style="color: red">Loan Name</th>
+                                <th style="color: red">Amount</th>
+                            </tr>
+                        </tbody>
+                        <?php 
+                            $sql1=$conn->query("select * from course1 where course_id='4'");
+                            while($row1=mysqli_fetch_array($sql1))
+                            {
+                                $id = $row1['id'];
+
+                                $sql = $conn->query("SELECT sum(approve_loan) as total_amount FROM `refer_earn` where user_id='$user_id' and sub_product_id = '$id'");
+                                $row = mysqli_fetch_array($sql);
+                        ?>
+                        <tr class="gradeX">
+                            <td><b><?= $row1['name'];?></b></td>
+                            <td>
+                                <?php
+                                    if(!empty($row['total_amount'])):
+                                ?>
+                                <i class="fa fa-inr"></i> <?= $row['total_amount'];?>
+                                <?php
+                                    endif;
+                                ?>
+                            </td>
+                        </tr>                        
+                        <?php
+                            }
+                        ?>
+                    </table>
                 </div>
             </div>
         </div>
@@ -75,7 +103,38 @@
                         $sql = $conn->query("SELECT count(*) as total_cards FROM `refer_earn` where user_id='$user_id' and product_id = 8 and status = 1");
                         $row = mysqli_fetch_array($sql);
                     ?>
-                    <h1 class="no-margins"><?= $row['total_cards'];?> Cards</h1>
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <tbody>
+                            <tr>
+                                <th style="color: red">Card Name</th>
+                                <th style="color: red">Card Number</th>
+                            </tr>
+                        </tbody>
+                        <?php 
+                            $sql1=$conn->query("select * from course1 where course_id='8'");
+                            while($row1=mysqli_fetch_array($sql1))
+                            {
+                                $id = $row1['id'];
+
+                                $sql = $conn->query("SELECT count(*) as total_cards FROM `refer_earn` where user_id='$user_id' and sub_product_id = '$id' and status = 1");
+                                $row = mysqli_fetch_array($sql);
+                        ?>
+                        <tr class="gradeX">
+                            <td><b><?= $row1['name'];?></b></td>
+                            <td>
+                                <?php
+                                    if(!empty($row['total_cards'])):
+                                ?>
+                                    <?= $row['total_cards'];?> Card
+                                <?php
+                                    endif;
+                                ?>
+                            </td>
+                        </tr>                        
+                        <?php
+                            }
+                        ?>
+                    </table>
                 </div>
             </div>
         </div>
@@ -85,11 +144,54 @@
                     <span class="label label-primary pull-left"><h5>Total Insurance</h5></span>
                 </div>
                 <div class="ibox-content">
-                    <?php
-                        $sql = $conn->query("SELECT count(*) as total_insurance FROM `refer_earn` where user_id='$user_id' and product_id = 5 and status = 1");
-                        $row = mysqli_fetch_array($sql);
-                    ?>
-                    <h1 class="no-margins"><?= $row['total_insurance'];?> Insurance</h1>
+
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <tbody>
+                            <tr>
+                                <th style="color: red">Insurance Name</th>
+                                <th style="color: red">Net</th>
+                                <th style="color: red">TP</th>
+                            </tr>
+                        </tbody>
+                        <?php 
+                            $sql1=$conn->query("select * from course1 where course_id='5'");
+                            while($row1=mysqli_fetch_array($sql1))
+                            {
+                                $id = $row1['id'];
+
+                                // net premium
+                                $sql = $conn->query("SELECT sum(net_premium) as total_net FROM `refer_earn` where user_id='$user_id' and sub_product_id = '$id' and status = 1");
+                                $row = mysqli_fetch_array($sql);
+
+                                // TP
+                                $sql_1 = $conn->query("SELECT sum(tp) as total_tp FROM `refer_earn` where user_id='$user_id' and sub_product_id = '$id' and status = 1");
+                                $row_1 = mysqli_fetch_array($sql_1);
+                        ?>
+                        <tr class="gradeX">
+                            <td><b><?= $row1['name'];?></b></td>
+                            <td>
+                                <?php
+                                    if(!empty($row['total_net'])):
+                                ?>
+                                    <?= $row['total_net'];?>
+                                <?php
+                                    endif;
+                                ?>
+                            </td>                            
+                            <td>
+                                <?php
+                                    if(!empty($row_1['total_tp'])):
+                                ?>
+                                    <?= $row_1['total_tp'];?>
+                                <?php
+                                    endif;
+                                ?>
+                            </td>
+                        </tr>                        
+                        <?php
+                            }
+                        ?>
+                    </table>
                 </div>
             </div>
         </div>
@@ -110,7 +212,7 @@
 
                 <div class="ibox-content">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover dataTables-example" >
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
                             <thead>
                                 <tr>
                                     <th>S.No.</th>

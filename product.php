@@ -2163,6 +2163,16 @@
                                             LifeStyle
                                         </span>
                                     </a>
+                                </li>                                
+                                <li>
+                                    <a href="javascript:void(0)" id="cd_7" class="">
+                                        <span class="card-image lifestyle-bw">
+                                            
+                                        </span>
+                                        <span class="card-text">
+                                            Low Fee
+                                        </span>
+                                    </a>
                                 </li>
                             </ul>
                             <style type="text/css">
@@ -2172,7 +2182,7 @@
                                     margin-bottom: 10px;
                                     border: solid thin #f2f0f0;
                                     position: relative;
-                                    width: 700px;
+                                    width: 800px;
                                 }
                                 .gr-cards-cat-list ul li:before {
                                     content: "";
@@ -2401,10 +2411,76 @@
             if(divID=="all")
             {
                 $(".all").show();
-            }
-            else{
-                $('.'+divID).show().siblings().hide();
-                //$('#' + divID).addClass('Active').siblings().removeClass('Active');
+            }            
+            else if(divID=="cd_1")
+            {
+                $(".cd_1").show();
+                $(".cd_2").hide();
+                $(".cd_3").hide();
+                $(".cd_4").hide();
+                $(".cd_5").hide();
+                $(".cd_6").hide();
+                $(".cd_7").hide();
+            }            
+            else if(divID=="cd_2")
+            {
+                $(".cd_1").hide();
+                $(".cd_2").show();
+                $(".cd_3").hide();
+                $(".cd_4").hide();
+                $(".cd_5").hide();
+                $(".cd_6").hide();
+                $(".cd_7").hide();
+            }            
+            else if(divID=="cd_3")
+            {
+                $(".cd_1").hide();
+                $(".cd_2").hide();
+                $(".cd_3").show();
+                $(".cd_4").hide();
+                $(".cd_5").hide();
+                $(".cd_6").hide();
+                $(".cd_7").hide();
+            }            
+            else if(divID=="cd_4")
+            {
+                $(".cd_1").hide();
+                $(".cd_2").hide();
+                $(".cd_3").hide();
+                $(".cd_4").show();
+                $(".cd_5").hide();
+                $(".cd_6").hide();
+                $(".cd_7").hide();
+            }            
+            else if(divID=="cd_5")
+            {
+                $(".cd_1").hide();
+                $(".cd_2").hide();
+                $(".cd_3").hide();
+                $(".cd_4").hide();
+                $(".cd_5").show();
+                $(".cd_6").hide();
+                $(".cd_7").hide();
+            }            
+            else if(divID=="cd_6")
+            {
+                $(".cd_1").hide();
+                $(".cd_2").hide();
+                $(".cd_3").hide();
+                $(".cd_4").hide();
+                $(".cd_5").hide();
+                $(".cd_6").show();
+                $(".cd_7").hide();
+            }            
+            else if(divID=="cd_7")
+            {
+                $(".cd_1").hide();
+                $(".cd_2").hide();
+                $(".cd_3").hide();
+                $(".cd_4").hide();
+                $(".cd_5").hide();
+                $(".cd_6").hide();
+                $(".cd_7").show();
             }
         });
     });

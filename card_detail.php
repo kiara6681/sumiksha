@@ -567,6 +567,9 @@
     .card-image>li>span{
         color: #000!important;
     } 
+    .gr-cards p span{
+        color: #000!important;
+    }
 </style>
 <script type="text/javascript">
     $(document).ready(function(){

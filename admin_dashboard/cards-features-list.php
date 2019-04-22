@@ -111,6 +111,12 @@
                                         LifeStyle
                                     <?php
                                         }
+                                        elseif($data_cmp['card_type_id']==7)
+                                        {
+                                    ?>
+                                        Low Fee
+                                    <?php
+                                        }
                                     ?>
                                     </td>
                                     <td><?php echo $data_cmp['card_name']; ?></td>
